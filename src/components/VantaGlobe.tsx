@@ -29,7 +29,7 @@ export function VantaGlobe() {
         minWidth: 200,
         scale: 1,
         scaleMobile: 1,
-        color: 0xc7ff3d,
+        color: 0x009ef0,
         color2: 0x8a8a86,
         size: 1,
         backgroundColor: 0x0a0a0b,
