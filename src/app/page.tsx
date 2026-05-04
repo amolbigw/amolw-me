@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
 import { PressRow } from "@/components/PressRow";
+import { VantaGlobe } from "@/components/VantaGlobe";
 import { press } from "@/lib/press";
 import { thoughts } from "@/lib/thoughts";
 
@@ -9,10 +10,15 @@ export default function Home() {
   const featuredThoughts = thoughts.slice(0, 3);
 
   return (
-    <div className="mx-auto max-w-6xl px-6">
-      {/* Hero */}
-      <section className="pt-20 pb-32 sm:pt-28 sm:pb-40">
-        <div className="reveal">
+    <>
+      {/* Hero — full-bleed Vanta globe behind, content layered above */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,black_70%,transparent)]">
+          <VantaGlobe />
+        </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--background)] via-transparent to-[var(--background)] opacity-60" />
+        <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-32 sm:pt-28 sm:pb-40">
+          <div className="reveal">
           <div className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <span className="text-[var(--accent)]">●</span>
             <span className="ml-3">Co-founder · CPO · fullthrottle.ai</span>
@@ -53,9 +59,11 @@ export default function Home() {
               Get in touch
             </a>
           </div>
+          </div>
         </div>
       </section>
 
+      <div className="mx-auto max-w-6xl px-6">
       {/* Press */}
       <section className="pb-32">
         <div className="flex items-end justify-between mb-10">
@@ -153,6 +161,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }
