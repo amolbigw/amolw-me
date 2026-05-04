@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SectionLabel } from "@/components/SectionLabel";
 
 export const metadata: Metadata = {
@@ -51,6 +52,19 @@ export default function AboutPage() {
           <span className="text-[var(--accent)]">entrepreneur</span>, currently
           building at the seam of AI and addressable TV.
         </h1>
+      </section>
+
+      <section className="pb-20">
+        <div className="relative aspect-[4/3] w-full overflow-hidden border border-[var(--border)] sm:aspect-[16/9]">
+          <Image
+            src="/amol_waishampayan.jpg"
+            alt="Amol Waishampayan"
+            fill
+            sizes="(min-width: 1280px) 1152px, 100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
       </section>
 
       <section className="pb-20">
