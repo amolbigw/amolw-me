@@ -12,7 +12,13 @@ export function PressRow({ item }: { item: PressItem }) {
       <div className="grid grid-cols-12 gap-4 sm:gap-6 items-center">
         <div className="col-span-12 sm:col-span-3 md:col-span-2">
           {item.logo ? (
-            <div className="flex h-16 w-full max-w-[160px] items-center justify-center rounded-md bg-white px-3 py-2">
+            <div
+              className={`flex h-16 w-full max-w-[160px] items-center justify-center rounded-md px-3 py-2 ${
+                item.logoTheme === "dark"
+                  ? "bg-[#1a1a1a] ring-1 ring-[var(--border)]"
+                  : "bg-white"
+              }`}
+            >
               <Image
                 src={item.logo}
                 alt={`${item.publication} logo`}

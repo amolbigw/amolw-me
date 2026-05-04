@@ -5,6 +5,7 @@ export type PressItem = {
   year: number;
   url: string;
   logo?: string;
+  logoTheme?: "light" | "dark";
 };
 
 const LOGOS = {
@@ -22,9 +23,144 @@ const LOGOS = {
   globeNewswire: "/logos/globe-newswire.png",
   abc27: "/logos/abc27.png",
   itvt: "/logos/itvt.jpg",
+  prnewswire: "/logos/prnewswire.png",
+  cbtNews: "/logos/cbt-news.png",
+  mediapost: "/logos/mediapost.jpg",
+  theMeasure: "/logos/the-measure.png",
+  theOutcome: "/logos/the-outcome.png",
+  nextInMedia: "/logos/next-in-media.png",
+  dailyDealerLive: "/logos/daily-dealer-live.png",
 };
 
 export const press: PressItem[] = [
+  {
+    publication: "Advertising Week",
+    title:
+      "Audio Is a Critical Connection Point in Media and Planning, Yet Remains Disconnected Across Channels",
+    year: 2026,
+    url: "https://advertisingweek.com/audio-is-a-key-connection-point-to-consumers-but-it-remains-disconnected-from-the-rest-of-media-planning/",
+    logo: LOGOS.advertisingWeek,
+  },
+  {
+    publication: "Winner Circle by BIG",
+    title: "AI-Powered Outcomes: Becoming the Easy Button for Modern Advertising",
+    year: 2026,
+    url: "https://youtu.be/7m7dOzhd3gM",
+  },
+  {
+    publication: "PR Newswire",
+    title:
+      "fullthrottle.ai Partners with TelevisaUnivision to Integrate Premium Multicultural Digital and CTV Inventory",
+    year: 2026,
+    url: "https://www.prnewswire.com/news-releases/fullthrottleai-partners-with-televisaunivision-to-bring-premium-multicultural-and-national-inventory-into-its-self-service-platform-302743304.html",
+    logo: LOGOS.prnewswire,
+  },
+  {
+    publication: "AdExchanger",
+    title: "TelevisaUnivision Joins The Streaming Self-Service Bandwagon",
+    year: 2026,
+    url: "https://www.adexchanger.com/tv/televisaunivision-joins-the-streaming-self-service-bandwagon/",
+    logo: LOGOS.adexchanger,
+  },
+  {
+    publication: "PR Newswire",
+    title:
+      "fullthrottle.ai Expands Into Audio With Premium Inventory, Streamlined Activation, and Unified Measurement",
+    year: 2026,
+    url: "https://www.prnewswire.com/news-releases/fullthrottleai-expands-into-audio-with-premium-inventory-streamlined-activation-and-unified-measurement-302735789.html",
+    logo: LOGOS.prnewswire,
+  },
+  {
+    publication: "CBT News",
+    title:
+      "Why dealer marketing just leveled up — agency-grade buying tools come to the showroom",
+    date: "Mar 26, 2026",
+    year: 2026,
+    url: "https://www.cbtnews.com/dealer-marketing-shift-agency-grade-buying-tools/",
+    logo: LOGOS.cbtNews,
+  },
+  {
+    publication: "PR Newswire",
+    title:
+      "fullthrottle.ai Launches Enhanced SmartMail to Unify Identity-Based Campaigns With Automated Direct Mail Activation",
+    year: 2026,
+    url: "https://www.prnewswire.com/news-releases/fullthrottleai-launches-enhanced-smartmail-capabilities-to-unify-identity-based-campaigns-with-automated-self-service-direct-mail-activation-302711445.html",
+    logo: LOGOS.prnewswire,
+  },
+  {
+    publication: "Advertising Week",
+    title:
+      "From Fragmented Channels to Marketplaces: Why Automotive Media Is Finally Catching Up to How Buyers Actually Shop",
+    year: 2026,
+    url: "https://advertisingweek.com/from-fragmented-channels-to-marketplaces-why-automotive-media-is-finally-catching-up-to-how-buyers-actually-shop/",
+    logo: LOGOS.advertisingWeek,
+  },
+  {
+    publication: "GlobeNewswire",
+    title:
+      "fullthrottle.ai Collaborates With Experian Automotive to Power Smarter Audience Creation",
+    date: "Mar 5, 2026",
+    year: 2026,
+    url: "https://www.globenewswire.com/news-release/2026/03/05/3250427/0/en/fullthrottle-ai-Collaborates-with-Experian-Automotive-to-Power-Smarter-Audience-Creation-With-Unified-First-and-Third-Party-Data.html",
+    logo: LOGOS.globeNewswire,
+  },
+  {
+    publication: "MediaPost",
+    title:
+      "Performance Engine Ties Experian to fullthrottle.ai for Automotive Audiences",
+    year: 2026,
+    url: "https://www.mediapost.com/publications/article/413239/performance-engine-ties-experian-to-fullthrottle.html",
+    logo: LOGOS.mediapost,
+  },
+  {
+    publication: "CBT News",
+    title:
+      "NADA Show 2026: Amol Waishampayan on fullthrottle.ai's Outcome-Driven DSP for Auto",
+    date: "Feb 5, 2026",
+    year: 2026,
+    url: "https://www.cbtnews.com/nada-show-2026-amol-waishampayan-fullthrottle-ai/",
+    logo: LOGOS.cbtNews,
+  },
+  {
+    publication: "The Measure",
+    title: "fullthrottle.ai Launches DSP to Accelerate Auto Campaigns",
+    year: 2026,
+    url: "https://www.themeasure.net/fullthrottle-ai-launches-dsp-to-accelerate-auto-campaigns/",
+    logo: LOGOS.theMeasure,
+    logoTheme: "dark",
+  },
+  {
+    publication: "Next in Media",
+    title:
+      "At CES 2026, TV Finds Itself at an Identity Crossroads",
+    year: 2026,
+    url: "https://mikeshields.substack.com/p/at-ces-2026-tv-finds-itself-at-an",
+    logo: LOGOS.nextInMedia,
+  },
+  {
+    publication: "Advertising Week",
+    title: "CTV's Measurement Problem Isn't Data — It's Usability",
+    year: 2026,
+    url: "https://advertisingweek.com/ctvs-measurement-problem-isnt-data-its-usability/",
+    logo: LOGOS.advertisingWeek,
+  },
+  {
+    publication: "The Outcome",
+    title:
+      "Why Transparency Will Define the Future of AI-Powered Advertising",
+    year: 2026,
+    url: "https://www.theoutcome.com/articles/ai-assisted-media-buying-exacerbates-existing-questions-about-transparency",
+    logo: LOGOS.theOutcome,
+    logoTheme: "dark",
+  },
+  {
+    publication: "Daily Dealer Live",
+    title:
+      "Amol Waishampayan on New Ad Tech and Automotive DSP Precision",
+    year: 2026,
+    url: "https://www.dealershipguy.com/toothman-on-fleet-focus-waishampayan-on-new-ad-tech-lundy-on-salesbdc-split-daily-dealer-live/",
+    logo: LOGOS.dailyDealerLive,
+  },
   {
     publication: "eMarketer",
     title: "Ad Measurement Trends H1 2024",
