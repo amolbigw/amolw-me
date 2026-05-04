@@ -45,25 +45,24 @@ const facts = [
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-6">
-      <section className="pt-20 pb-16">
+      <section className="pt-20 pb-20">
         <SectionLabel index="00">About</SectionLabel>
-        <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium max-w-4xl">
-          Lifelong{" "}
-          <span className="text-[var(--accent)]">entrepreneur</span>, currently
-          building at the seam of AI and addressable TV.
-        </h1>
-      </section>
-
-      <section className="pb-20">
-        <div className="relative aspect-[4/3] w-full overflow-hidden border border-[var(--border)] sm:aspect-[16/9]">
-          <Image
-            src="/amol_waishampayan.jpg"
-            alt="Amol Waishampayan"
-            fill
-            sizes="(min-width: 1280px) 1152px, 100vw"
-            className="object-cover"
-            priority
-          />
+        <div className="mt-6 grid gap-10 sm:grid-cols-12 sm:items-end sm:gap-12">
+          <h1 className="sm:col-span-8 font-sans text-[clamp(2rem,4.5vw,4rem)] leading-[1.02] tracking-tight font-medium">
+            Lifelong{" "}
+            <span className="text-[var(--accent)]">entrepreneur</span>,
+            currently building at the seam of AI and addressable TV.
+          </h1>
+          <div className="sm:col-span-4 relative aspect-[4/5] overflow-hidden border border-[var(--border)]">
+            <Image
+              src="/amol_waishampayan.jpg"
+              alt="Amol Waishampayan"
+              fill
+              sizes="(min-width: 1280px) 384px, (min-width: 640px) 33vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
       </section>
 
