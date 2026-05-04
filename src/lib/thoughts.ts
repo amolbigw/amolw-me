@@ -1,55 +1,41 @@
-export type Thought = {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  externalUrl?: string;
-};
+import type { Thought } from "@/lib/thoughts-types";
+
+import { thought as dataEmpire } from "@/content/thoughts/did-you-build-a-data-empire-just-to-send-personalized-emails";
+import { thought as fitnessApp } from "@/content/thoughts/i-built-a-fitness-app-in-4-hours-using-ai";
+import { thought as wolves } from "@/content/thoughts/when-wolves-teach-sheep-to-build-their-own-kitchen";
+import { thought as durability } from "@/content/thoughts/core-business-durability-in-the-age-of-ai";
+import { thought as cfoPlaybook } from "@/content/thoughts/mid-market-agency-cfo-playbook-2026";
+import { thought as fiveYearOld } from "@/content/thoughts/the-5-year-olds-guide-to-ai-part-i";
+import { thought as inHouse } from "@/content/thoughts/agency-services-to-in-house-or-not-to-in-house";
+import { thought as cookiesNotCanceled } from "@/content/thoughts/cookies-arent-canceled-heres-why-that-doesnt-matter";
+import { thought as demystifying } from "@/content/thoughts/demystifying-ais-role-in-product-development";
+import { thought as thirdParty } from "@/content/thoughts/whats-going-to-happen-to-third-party-data-assets";
+import { thought as pirates } from "@/content/thoughts/pirates-wanted";
+import { thought as takeBack } from "@/content/thoughts/adtech-take-back-your-data-control";
+import { thought as cookiesSimplified } from "@/content/thoughts/cookies-simplified-who-and-how";
+
+export type { Thought } from "@/lib/thoughts-types";
 
 export const thoughts: Thought[] = [
-  {
-    slug: "ai-tale-elara-garlic",
-    title: "AI Tale — The Culinary Odyssey of Elara",
-    date: "2023-08-14",
-    excerpt:
-      "A village woman discovers garlic and turns it into a regional sensation. A short fable about distribution, taste, and the slow spread of new ingredients.",
-    externalUrl:
-      "https://amolw.me/thoughts/2023/8/ai-tale-the-culinary-odyssey-of-elara-unearthing-the-secret-of-garlic",
-  },
-  {
-    slug: "ai-comic-kael-watermelon",
-    title: "AI Comic — Whispers of the Desert: Kael's Watermelon Discovery",
-    date: "2023-08-12",
-    excerpt:
-      "A nomadic hunter finds a watermelon in the desert and brings it home. A comic about discovery economics in tight communities.",
-    externalUrl:
-      "https://amolw.me/thoughts/2023/8/ai-comic-whispers-of-the-desert-kaels-watermelon-discovery",
-  },
-  {
-    slug: "alex-worker-2045",
-    title: "AI Comic — Alex, Worker of 2045. A day in the life.",
-    date: "2023-06-26",
-    excerpt:
-      "A speculative day-in-the-life: blockchain, NFTs, and Web3 woven into ordinary work. What does the boring middle of the future look like?",
-    externalUrl:
-      "https://amolw.me/thoughts/2023/6/alex-worker-of-the-future-a-day-in-the-life-of-2045",
-  },
-  {
-    slug: "ai-product-development",
-    title: "Demystifying AI's Role in Product Development",
-    date: "2023-06-04",
-    excerpt:
-      "AI holds significant potential, but the human creative loop is still doing the heavy lifting. A balanced look at where AI helps and where it doesn't — yet.",
-    externalUrl:
-      "https://amolw.me/thoughts/2023/6/demystifying-ais-role-in-product-development-a-balanced-perspective",
-  },
-  {
-    slug: "third-party-data-assets",
-    title: "What's Going To Happen To Third-Party Data Assets?",
-    date: "2022-07-28",
-    excerpt:
-      "Privacy regulation is reshaping the third-party market. The play isn't to mourn the cookie — it's to convert third-party audiences into first-party household relationships.",
-    externalUrl:
-      "https://amolw.me/thoughts/2022/7/whats-going-to-happen-to-third-party-data-assets",
-  },
-];
+  dataEmpire,
+  fitnessApp,
+  wolves,
+  durability,
+  cfoPlaybook,
+  fiveYearOld,
+  inHouse,
+  cookiesNotCanceled,
+  demystifying,
+  thirdParty,
+  pirates,
+  takeBack,
+  cookiesSimplified,
+].sort((a, b) => (a.date < b.date ? 1 : -1));
+
+export function getThought(slug: string): Thought | undefined {
+  return thoughts.find((t) => t.slug === slug);
+}
+
+export function getAllThoughtSlugs(): string[] {
+  return thoughts.map((t) => t.slug);
+}

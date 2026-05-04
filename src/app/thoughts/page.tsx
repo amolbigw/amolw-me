@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
 import { thoughts } from "@/lib/thoughts";
 
 export const metadata: Metadata = {
   title: "Thoughts · Amol Waishampayan",
-  description: "Essays, comics, and short writing on AI, data, and product.",
+  description:
+    "Essays on AI, identity, first-party data, and the next era of marketing — originally published on LinkedIn.",
 };
 
 export default function ThoughtsPage() {
@@ -17,30 +20,28 @@ export default function ThoughtsPage() {
           <span className="text-[var(--accent)]">experiments</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--muted)]">
-          Essays, AI-generated fables, and the occasional take on where this is
-          all going. Most posts live on the legacy site for now — new writing
-          will land here.
+          Essays on AI, identity, first-party data, and the next era of
+          marketing. Each piece is mirrored here from LinkedIn — a permanent
+          home for thinking that tends to disappear into the feed.
         </p>
       </section>
 
       <section className="pb-32">
         <div className="border-t border-[var(--border)]">
           {thoughts.map((t) => (
-            <a
+            <Link
               key={t.slug}
-              href={t.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/thoughts/${t.slug}`}
               className="group block border-b border-[var(--border)] py-8 transition-colors hover:bg-white/[0.02]"
             >
-              <div className="grid grid-cols-12 gap-6 items-baseline">
-                <div className="col-span-12 sm:col-span-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+              <div className="grid grid-cols-12 gap-6 items-start">
+                <div className="col-span-12 sm:col-span-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors pt-1">
                   {new Date(t.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "short",
                   })}
                 </div>
-                <div className="col-span-12 sm:col-span-9">
+                <div className="col-span-12 sm:col-span-7">
                   <h2 className="text-xl sm:text-2xl leading-tight text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
                     {t.title}
                   </h2>
@@ -48,11 +49,24 @@ export default function ThoughtsPage() {
                     {t.excerpt}
                   </p>
                 </div>
-                <div className="col-span-12 sm:col-span-1 sm:text-right font-mono text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+                <div className="col-span-12 sm:col-span-2 sm:block">
+                  {t.coverImage ? (
+                    <div className="relative aspect-[1200/627] overflow-hidden border border-[var(--border)] bg-[var(--border)]">
+                      <Image
+                        src={t.coverImage}
+                        alt={t.coverAlt || t.title}
+                        fill
+                        sizes="(min-width: 640px) 16vw, 100vw"
+                        className="object-cover transition-opacity group-hover:opacity-90"
+                      />
+                    </div>
+                  ) : null}
+                </div>
+                <div className="col-span-12 sm:col-span-1 sm:text-right font-mono text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors pt-1">
                   ↗
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

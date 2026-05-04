@@ -95,11 +95,9 @@ export default function Home() {
         </div>
         <div className="grid gap-px bg-[var(--border)] sm:grid-cols-3">
           {featuredThoughts.map((t) => (
-            <a
+            <Link
               key={t.slug}
-              href={t.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/thoughts/${t.slug}`}
               className="group bg-[var(--background)] p-6 flex flex-col gap-4 hover:bg-white/[0.02] transition-colors"
             >
               <div className="font-mono text-xs text-[var(--muted)]">
@@ -116,9 +114,9 @@ export default function Home() {
                 {t.excerpt}
               </p>
               <div className="mt-auto pt-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
-                Read ↗
+                Read →
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
