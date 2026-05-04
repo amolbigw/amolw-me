@@ -4,6 +4,24 @@ export type PressItem = {
   date?: string;
   year: number;
   url: string;
+  logo?: string;
+};
+
+const LOGOS = {
+  theCurrent: "/logos/the-current.png",
+  emarketer: "/logos/emarketer.png",
+  adexchanger: "/logos/adexchanger.png",
+  nexttv: "/logos/nexttv.png",
+  businessJournals: "/logos/business-journals.jpg",
+  iab: "/logos/iab.png",
+  marketecture: "/logos/marketecture.png",
+  advertisingWeek: "/logos/advertising-week.png",
+  digiday: "/logos/digiday.jpg",
+  martechSeries: "/logos/martech-series.png",
+  rethinkResearch: "/logos/rethink-research.jpg",
+  globeNewswire: "/logos/globe-newswire.png",
+  abc27: "/logos/abc27.png",
+  itvt: "/logos/itvt.jpg",
 };
 
 export const press: PressItem[] = [
@@ -13,18 +31,21 @@ export const press: PressItem[] = [
     date: "Feb 29, 2024",
     year: 2024,
     url: "https://www.emarketer.com/content/ad-measurement-trends-h1-2024",
+    logo: LOGOS.emarketer,
   },
   {
     publication: "The Current",
     title: "10 marketers weigh in on what's in store for 2024",
     year: 2024,
     url: "https://www.thecurrent.com/digital-marketer-2024-predictions-ai-retail-media",
+    logo: LOGOS.theCurrent,
   },
   {
     publication: "The Current",
     title: "AI and streaming take center stage at CES 2024",
     year: 2024,
     url: "https://www.thecurrent.com/current-report-ai-streaming-ces-2024",
+    logo: LOGOS.theCurrent,
   },
   {
     publication: "Advertising Week",
@@ -32,18 +53,21 @@ export const press: PressItem[] = [
       "AI for Marketers: How AI is Bringing More Effectiveness and Efficiency to TV",
     year: 2023,
     url: "https://newyork2023.advertisingweek.com/aw/schedule",
+    logo: LOGOS.advertisingWeek,
   },
   {
     publication: "AdExchanger",
     title: "fullthrottle.ai Puts Pedal To The Metal On CTV Attribution",
     year: 2023,
     url: "https://www.adexchanger.com/tv/fullthrottle-puts-pedal-to-the-metal-on-ctv-attribution/",
+    logo: LOGOS.adexchanger,
   },
   {
     publication: "NextTV",
     title: "fullthrottle.ai Gets Second Patent For Ad Attribution",
     year: 2023,
     url: "https://www.nexttv.com/news/fullthrottleai-gets-second-patent-for-ad-attribution",
+    logo: LOGOS.nexttv,
   },
   {
     publication: "Philadelphia Business Journal",
@@ -52,6 +76,7 @@ export const press: PressItem[] = [
     date: "Aug 24, 2023",
     year: 2023,
     url: "https://www.bizjournals.com/philadelphia/news/2023/08/24/diversity-in-business-awards-amol-waishampayan.html",
+    logo: LOGOS.businessJournals,
   },
   {
     publication: "The Current",
@@ -59,6 +84,7 @@ export const press: PressItem[] = [
       "'The industry isn't ready yet': A new report highlights flaws in Google's Privacy Sandbox",
     year: 2023,
     url: "https://www.thecurrent.com/report-google-privacy-sandbox-iab-tech-lab-data",
+    logo: LOGOS.theCurrent,
   },
   {
     publication: "eMarketer",
@@ -66,6 +92,7 @@ export const press: PressItem[] = [
     date: "May 10, 2023",
     year: 2023,
     url: "https://www.emarketer.com/content/programmatic-advertising-trends-q2-2023",
+    logo: LOGOS.emarketer,
   },
   {
     publication: "Gizmodo",
@@ -80,6 +107,7 @@ export const press: PressItem[] = [
       "Leveraging First-Party Data: Turning Data Scavengers into Data Harvesters",
     year: 2023,
     url: "https://www.iab.com/video/leveraging-first-party-data-turning-data-scavengers-into-data-harvesters/",
+    logo: LOGOS.iab,
   },
   {
     publication: "Marketecture",
@@ -87,12 +115,14 @@ export const press: PressItem[] = [
       "fullthrottle.ai — First-party data solutions and APIs for advertisers and publishers",
     year: 2023,
     url: "https://www.marketecture.tv/programs/fullthrottle-amol-waishampayan",
+    logo: LOGOS.marketecture,
   },
   {
     publication: "Advertising Week",
     title: "AW360 Podcast: Amol Waishampayan, CPO, fullthrottle.ai",
     year: 2023,
     url: "https://advertisingweek.com/aw360-amol-waishampayan/",
+    logo: LOGOS.advertisingWeek,
   },
   {
     publication: "Digiday",
@@ -100,6 +130,7 @@ export const press: PressItem[] = [
       "Tech firm touts new way to generate first-party data for agencies, publishers without privacy-compliance issues",
     year: 2023,
     url: "https://digiday.com/marketing/this-tech-firm-found-a-new-way-to-generate-first-party-data-without-privacy-compliance-issues/",
+    logo: LOGOS.digiday,
   },
   {
     publication: "AdExchanger",
@@ -107,6 +138,7 @@ export const press: PressItem[] = [
       "Blockgraph Brings fullthrottle.ai's Cookieless Identity Strategy To TV",
     year: 2023,
     url: "https://www.adexchanger.com/tv-2/blockgraph-brings-fullthrottles-cookieless-identity-strategy-to-tv/",
+    logo: LOGOS.adexchanger,
   },
   {
     publication: "MarTech Series",
@@ -114,6 +146,7 @@ export const press: PressItem[] = [
       "MarTech Interview with Amol Waishampayan, Chief Product Officer at fullthrottle.ai",
     year: 2023,
     url: "https://martechseries.com/mts-insights/interviews/martech-interview-with-amol-waishampayan-chief-product-officer-at-fullthrottle/",
+    logo: LOGOS.martechSeries,
   },
   {
     publication: "ABC27",
@@ -122,6 +155,7 @@ export const press: PressItem[] = [
     date: "Jan 23, 2023",
     year: 2023,
     url: "https://www.globenewswire.com/en/news-release/2023/01/23/2593371/0/en/FullThrottle-Technologies-LLC-Announces-Issuance-of-Patent-for-Company-s-Proprietary-First-Party-Data-Technologies.html",
+    logo: LOGOS.abc27,
   },
   {
     publication: "Rethink Research",
@@ -129,6 +163,7 @@ export const press: PressItem[] = [
       "fullthrottle.ai lifts lid on fresh patent, MVPDs still scaling business",
     year: 2022,
     url: "https://rethinkresearch.biz/articles/full-throttle-lifts-lid-on-fresh-patent-mvpds-still-scaling-business/",
+    logo: LOGOS.rethinkResearch,
   },
   {
     publication: "Globe Newswire",
@@ -137,6 +172,7 @@ export const press: PressItem[] = [
     date: "Oct 6, 2022",
     year: 2022,
     url: "https://www.globenewswire.com/news-release/2022/10/06/2529534/0/en/FullThrottle-Announces-Launch-of-Audience-Flume-to-Offer-Turnkey-Access-to-Novel-First-Party-Data.html",
+    logo: LOGOS.globeNewswire,
   },
   {
     publication: "Globe Newswire",
@@ -145,6 +181,7 @@ export const press: PressItem[] = [
     date: "Jun 9, 2022",
     year: 2022,
     url: "https://www.globenewswire.com/news-release/2022/06/09/2459819/0/en/Blockgraph-and-FullThrottle-Announce-Integration-to-Unlock-New-Levels-of-Addressable-Targeting-for-TV-Advertisements.html",
+    logo: LOGOS.globeNewswire,
   },
   {
     publication: "Advertising Week",
@@ -152,6 +189,7 @@ export const press: PressItem[] = [
       "Best practices for collecting, controlling and capitalizing on first-party data assets",
     year: 2022,
     url: "https://advertisingweek.com/why-brands-need-to-become-data-farmers/",
+    logo: LOGOS.advertisingWeek,
   },
   {
     publication: "ITVT",
@@ -159,6 +197,7 @@ export const press: PressItem[] = [
       "Televisionation: fullthrottle.ai's Waishampayan on First-Party Data and More",
     year: 2022,
     url: "https://itvt.com/televisionation/televisionation-fullthrottles-waishampayan-on-first-party-data-and-more/",
+    logo: LOGOS.itvt,
   },
   {
     publication: "Digiday",
@@ -166,5 +205,6 @@ export const press: PressItem[] = [
       "The eventual disappearance of cookies will be transformative for digital marketing",
     year: 2022,
     url: "https://digiday.com/",
+    logo: LOGOS.digiday,
   },
 ];
