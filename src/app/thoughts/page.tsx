@@ -34,12 +34,16 @@ export default function ThoughtsPage() {
               href={`/thoughts/${t.slug}`}
               className="group block border-b border-[var(--border)] py-8 transition-colors hover:bg-white/[0.02]"
             >
-              <div className="grid grid-cols-12 gap-6 items-start">
-                <div className="col-span-12 sm:col-span-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors pt-1">
-                  {new Date(t.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                  })}
+              <div className="grid grid-cols-12 gap-x-6 gap-y-2 items-start">
+                <div className="col-span-12 sm:col-span-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1 flex items-center gap-2">
+                  <span>
+                    {new Date(t.date).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                    })}
+                  </span>
+                  <span aria-hidden className="sm:hidden">·</span>
+                  <span aria-hidden className="sm:hidden">↗</span>
                 </div>
                 <div className="col-span-12 sm:col-span-7">
                   <h2 className="text-xl sm:text-2xl leading-tight text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
@@ -49,7 +53,7 @@ export default function ThoughtsPage() {
                     {t.excerpt}
                   </p>
                 </div>
-                <div className="col-span-12 sm:col-span-2 sm:block">
+                <div className="hidden sm:block sm:col-span-2">
                   {t.coverImage ? (
                     <div className="relative aspect-[1200/627] overflow-hidden border border-[var(--border)] bg-[var(--border)]">
                       <Image
@@ -62,7 +66,7 @@ export default function ThoughtsPage() {
                     </div>
                   ) : null}
                 </div>
-                <div className="col-span-12 sm:col-span-1 sm:text-right font-mono text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors pt-1">
+                <div className="hidden sm:block sm:col-span-1 sm:text-right font-mono text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1">
                   ↗
                 </div>
               </div>

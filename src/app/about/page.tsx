@@ -53,12 +53,12 @@ export default function AboutPage() {
             <span className="text-[var(--accent)]">entrepreneur</span>,
             currently building at the seam of AI and addressable TV.
           </h1>
-          <div className="sm:col-span-4 relative aspect-[4/5] overflow-hidden border border-[var(--border)]">
+          <div className="sm:col-span-4 relative aspect-[4/5] w-full max-w-[260px] mx-auto sm:max-w-none overflow-hidden border border-[var(--border)]">
             <Image
               src="/amol_waishampayan.jpg"
               alt="Amol Waishampayan"
               fill
-              sizes="(min-width: 1280px) 384px, (min-width: 640px) 33vw, 100vw"
+              sizes="(min-width: 1280px) 384px, (min-width: 640px) 33vw, 260px"
               className="object-cover"
               priority
             />
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <aside className="border-l border-[var(--border)] pl-6 space-y-6">
+          <aside className="border-t border-[var(--border)] pt-6 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:flex sm:flex-col sm:gap-0 sm:space-y-6">
             {facts.map((f) => (
               <div key={f.label}>
                 <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
@@ -140,18 +140,18 @@ export default function AboutPage() {
         <div className="mt-8 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <a
             href="mailto:amolbigw@gmail.com"
-            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group"
+            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               Email
             </div>
-            <div className="mt-2 text-base">amolbigw@gmail.com</div>
+            <div className="mt-2 text-base break-all">amolbigw@gmail.com</div>
           </a>
           <a
             href="https://www.linkedin.com/in/amolwaishampayan"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group"
+            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               LinkedIn
@@ -162,7 +162,7 @@ export default function AboutPage() {
             href="https://www.instagram.com/amolw"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group"
+            className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               Instagram

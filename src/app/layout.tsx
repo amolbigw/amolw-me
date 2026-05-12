@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Link from "next/link";
 import { ParticleBackground } from "@/components/ParticleBackground";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,14 +31,6 @@ export const metadata: Metadata = {
   },
 };
 
-const nav = [
-  { href: "/", label: "Index" },
-  { href: "/news", label: "Press" },
-  { href: "/thoughts", label: "Thoughts" },
-  { href: "/speaking", label: "Speaking" },
-  { href: "/about", label: "About" },
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -49,27 +41,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ParticleBackground />
-        <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-md">
-          <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-            <Link
-              href="/"
-              className="font-mono text-sm tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
-            >
-              <span className="text-[var(--accent)]">/</span>amolw
-            </Link>
-            <nav className="flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
-              {nav.slice(1).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="hover:text-[var(--foreground)] transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </header>
+        <Header />
 
         <main className="flex-1">{children}</main>
 
@@ -79,12 +51,12 @@ export default function RootLayout({
               © {new Date().getFullYear()} Amol Waishampayan ·
               <span className="text-[var(--foreground)]"> built from scratch</span>
             </div>
-            <div className="flex gap-5 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+            <div className="flex gap-6 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
               <a
                 href="https://www.linkedin.com/in/amolwaishampayan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--accent)] transition-colors"
+                className="-my-2 py-2 hover:text-[var(--accent)] transition-colors"
               >
                 LinkedIn
               </a>
@@ -92,13 +64,13 @@ export default function RootLayout({
                 href="https://www.instagram.com/amolw"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[var(--accent)] transition-colors"
+                className="-my-2 py-2 hover:text-[var(--accent)] transition-colors"
               >
                 Instagram
               </a>
               <a
                 href="mailto:amolbigw@gmail.com"
-                className="hover:text-[var(--accent)] transition-colors"
+                className="-my-2 py-2 hover:text-[var(--accent)] transition-colors"
               >
                 Email
               </a>

@@ -31,9 +31,14 @@ export function ParticleBackground() {
     let width = 0;
     let height = 0;
     let particles: Particle[] = [];
+    let raf = 0;
+    let running = true;
 
     const seed = () => {
-      const count = Math.min(140, Math.floor((width * height) / 14000));
+      const isSmall = window.matchMedia("(max-width: 640px)").matches;
+      const cap = isSmall ? 55 : 140;
+      const density = isSmall ? 28000 : 14000;
+      const count = Math.min(cap, Math.floor((width * height) / density));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -59,8 +64,8 @@ export function ParticleBackground() {
     resize();
     window.addEventListener("resize", resize);
 
-    let raf = 0;
     const draw = () => {
+      if (!running) return;
       ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
         if (!reduceMotion) {
@@ -82,8 +87,21 @@ export function ParticleBackground() {
     };
     draw();
 
+    const onVis = () => {
+      if (document.hidden) {
+        running = false;
+        cancelAnimationFrame(raf);
+      } else if (!running) {
+        running = true;
+        draw();
+      }
+    };
+    document.addEventListener("visibilitychange", onVis);
+
     return () => {
+      running = false;
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVis);
       cancelAnimationFrame(raf);
     };
   }, [enabled]);

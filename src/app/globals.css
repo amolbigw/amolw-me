@@ -37,6 +37,16 @@ body {
   color: var(--foreground);
 }
 
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
 @keyframes reveal-up {
   from {
     opacity: 0;

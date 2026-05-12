@@ -55,7 +55,7 @@ export default function SpeakingPage() {
         <SectionLabel index="04">Topics</SectionLabel>
         <div className="mt-8 grid gap-px bg-[var(--border)] sm:grid-cols-2">
           {topics.map((t, i) => (
-            <div key={t.title} className="bg-[var(--background)] p-8">
+            <div key={t.title} className="bg-[var(--background)] p-6 sm:p-8">
               <div className="font-mono text-xs text-[var(--muted)] mb-3">
                 {(i + 1).toString().padStart(2, "0")}
               </div>
@@ -74,7 +74,7 @@ export default function SpeakingPage() {
           {formats.map((f) => (
             <span
               key={f}
-              className="border border-[var(--border)] px-4 py-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)]"
+              className="inline-flex items-center border border-[var(--border)] px-4 py-2.5 font-mono text-xs uppercase tracking-widest text-[var(--muted)]"
             >
               {f}
             </span>
@@ -84,14 +84,14 @@ export default function SpeakingPage() {
 
       <section className="pb-32">
         <SectionLabel index="06">Get in touch</SectionLabel>
-        <div className="mt-8 border border-[var(--border)] p-8 sm:p-12">
-          <p className="text-xl sm:text-2xl leading-snug max-w-2xl">
+        <div className="mt-8 border border-[var(--border)] p-6 sm:p-12">
+          <p className="text-lg sm:text-2xl leading-snug max-w-2xl">
             Send a brief — date, audience, format, and anything specific you'd
             want covered. I'll get back within a few days.
           </p>
           <a
             href="mailto:amolbigw@gmail.com?subject=Speaking inquiry"
-            className="mt-8 inline-block font-mono text-sm text-[var(--accent)] underline-offset-4 hover:underline"
+            className="mt-8 inline-flex min-h-11 items-center font-mono text-base sm:text-sm text-[var(--accent)] underline-offset-4 hover:underline break-all"
           >
             amolbigw@gmail.com →
           </a>

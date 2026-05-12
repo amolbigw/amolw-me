@@ -17,7 +17,7 @@ export default function Home() {
           <VantaGlobe />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--background)] via-transparent to-[var(--background)] opacity-60" />
-        <div className="relative mx-auto max-w-6xl px-6 pt-20 pb-32 sm:pt-28 sm:pb-40">
+        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-28 sm:pb-40">
           <div className="reveal">
           <div className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <span className="text-[var(--accent)]">●</span>
@@ -42,19 +42,19 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-widest">
             <Link
               href="/about"
-              className="border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               About →
             </Link>
             <Link
               href="/thoughts"
-              className="border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               Read writing
             </Link>
             <a
               href="mailto:amolbigw@gmail.com"
-              className="border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               Get in touch
             </a>
