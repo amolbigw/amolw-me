@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SectionLabel } from "@/components/SectionLabel";
+import { JsonLd } from "@/components/JsonLd";
 import { pageMeta } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Talks & Interviews",
@@ -37,9 +39,44 @@ const formats = [
   "Press interview",
 ];
 
+/**
+ * Rendered on the page and used to build the FAQPage schema below, so the
+ * markup can never claim a question the page does not actually answer.
+ */
+const faqs = [
+  {
+    q: "What topics does Amol Waishampayan speak on?",
+    a: "Four core topics: the post-cookie web, first-party data in practice, CTV attribution and measurement, and AI for marketers. Each one comes from running an AdTech business day to day rather than from research, so talks lean on live decisions and real numbers.",
+  },
+  {
+    q: "What speaking formats are available?",
+    a: "Keynote, panel, fireside chat, podcast, workshop, and press interview. Sessions can be tailored to a keynote slot, a moderated panel, or a working session with a smaller team.",
+  },
+  {
+    q: "What should a speaking request include?",
+    a: "Send a brief with the date, the audience, the format, and anything specific you want covered. Knowing who is in the room matters more than the topic label, since the same subject lands differently for a CFO, a media buyer, and a publisher.",
+  },
+  {
+    q: "How quickly will I hear back about a speaking inquiry?",
+    a: "Within a few days. Email is the fastest route and reaches Amol directly rather than a booking desk.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  url: absoluteUrl("/speaking"),
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function SpeakingPage() {
   return (
     <div className="mx-auto max-w-6xl px-6">
+      <JsonLd data={faqSchema} />
       <section className="pt-20 pb-16">
         <SectionLabel index="03">Speaking</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium">
@@ -86,8 +123,27 @@ export default function SpeakingPage() {
         </div>
       </section>
 
+      <section className="pb-20">
+        <SectionLabel index="06">Questions</SectionLabel>
+        <div className="mt-8 border-t border-[var(--border)]">
+          {faqs.map((f) => (
+            <div
+              key={f.q}
+              className="grid grid-cols-12 gap-x-6 gap-y-3 border-b border-[var(--border)] py-8"
+            >
+              <h3 className="col-span-12 sm:col-span-5 text-lg leading-snug text-[var(--foreground)]">
+                {f.q}
+              </h3>
+              <p className="col-span-12 sm:col-span-7 text-base leading-relaxed text-[var(--muted)]">
+                {f.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="pb-32">
-        <SectionLabel index="06">Get in touch</SectionLabel>
+        <SectionLabel index="07">Get in touch</SectionLabel>
         <div className="mt-8 border border-[var(--border)] p-6 sm:p-12">
           <p className="text-lg sm:text-2xl leading-snug max-w-2xl">
             Send a brief — date, audience, format, and anything specific you&apos;d
