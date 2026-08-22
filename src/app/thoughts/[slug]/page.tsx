@@ -58,8 +58,24 @@ export default async function ThoughtPage(
     isPartOf: { "@id": `${site.url}/thoughts#blog` },
     author: { "@id": `${site.url}/#person` },
     publisher: { "@id": `${site.url}/#person` },
+    ...(t.answer ? { abstract: t.answer } : {}),
     ...(t.coverImage ? { image: absoluteUrl(t.coverImage) } : {}),
   };
+
+  // Only emitted when the essay carries Q&A that is visible on the page; the
+  // guard in lib/thoughts.ts enforces that.
+  const faqSchema = t.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        url,
+        mainEntity: t.faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -80,6 +96,7 @@ export default async function ThoughtPage(
     <article className="mx-auto max-w-3xl px-6">
       <JsonLd data={postSchema} />
       <JsonLd data={breadcrumbSchema} />
+      {faqSchema && <JsonLd data={faqSchema} />}
       <div className="pt-16 pb-8">
         <Link
           href="/thoughts"
@@ -104,6 +121,14 @@ export default async function ThoughtPage(
           <span aria-hidden>↗</span>
         </a>
       </header>
+
+      {t.answer && (
+        <div className="mt-10 border-l-2 border-[var(--accent)] bg-[var(--accent)]/[0.07] py-4 pl-5 pr-4 sm:pl-6">
+          <p className="text-base sm:text-lg leading-relaxed text-[var(--foreground)]">
+            {t.answer}
+          </p>
+        </div>
+      )}
 
       {t.coverImage && (
         <div className="relative my-12 aspect-[1200/627] overflow-hidden border border-[var(--border)]">

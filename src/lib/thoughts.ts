@@ -32,6 +32,40 @@ export const thoughts: Thought[] = [
   cookiesSimplified,
 ].sort((a, b) => (a.date < b.date ? 1 : -1));
 
+/** Strip the markdown emphasis and line wrapping that `body` carries. */
+function normalize(text: string): string {
+  return text.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Google requires FAQ rich-result markup to match text a visitor can actually
+ * see -- both halves of the pair. Every `faqs[].q` must therefore match a
+ * heading in `body`, and every `faqs[].a` a verbatim run of its prose. Running
+ * this at module scope means drift fails `next build` rather than silently
+ * shipping non-compliant structured data.
+ */
+function assertFaqsAreVisible(all: Thought[]): void {
+  const problems = all.flatMap((t) => {
+    const body = normalize(t.body);
+    return (t.faqs ?? []).flatMap((f) =>
+      (["q", "a"] as const)
+        .filter((side) => !body.includes(normalize(f[side])))
+        .map(
+          (side) =>
+            `  ${t.slug}: ${side === "q" ? "question" : "answer"} not found in body -> "${f[side].slice(0, 60)}..."`,
+        ),
+    );
+  });
+
+  if (problems.length > 0) {
+    throw new Error(
+      `FAQ answers must appear verbatim in the essay body:\n${problems.join("\n")}`,
+    );
+  }
+}
+
+assertFaqsAreVisible(thoughts);
+
 export function getThought(slug: string): Thought | undefined {
   return thoughts.find((t) => t.slug === slug);
 }

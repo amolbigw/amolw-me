@@ -8,6 +8,18 @@ export const thought: Thought = {
     "The cookieless world breaks one easy question — find an audience and reach them — into two harder ones: who, and how. Everyone is racing to own the 'how.' Brands should focus on owning the 'who.'",
   linkedinUrl:
     "https://www.linkedin.com/pulse/cookies-simplified-who-how-amol-waishampayan",
+  answer:
+    'The cookieless problem splits into two questions: who to target, and how to reach them. The industry is racing to own the "how" with competing IDs and interest-based signals, and no single one will win. Brands should own the "who" as first-party household data, then bring it to whichever solutions survive.',
+  faqs: [
+    {
+      q: "Which cookieless solution will win?",
+      a: "The reality of where this will end up will actually be a little simpler — no one is going to win. Everyone is going to have their own solution and it's going to be a bit fragmented.",
+    },
+    {
+      q: "Why is this really a problem for a large organization?",
+      a: 'Otherwise, you\'re putting your fate solely on other platforms, and no one is sure what they\'re going to do. If you want to control your destiny, get a handle on the "who", do it while the rest of the world figures out the "how".',
+    },
+  ],
   coverImage: "/thoughts/cookies-simplified-who-and-how.jpg",
   coverAlt: 'Cookies Simplified – "Who" and "How"',
   body: `## Control your Destiny and Achieve Data Independence: Breaking Down the Demise of Cookies
@@ -18,7 +30,7 @@ In terms of the last decade or so of programmatic advertising — life was good.
 
 Cookie-based advertising and targeting was the one way to determine "who" to find and "how" to find them via the cookie ID. Now, this one consistent way has been broken down into multiple problems that need to be individually solved for, along with cookies going away.
 
-### The Problem
+### What breaks when third-party cookies go away?
 
 Let's restate it:
 
@@ -27,7 +39,7 @@ Let's restate it:
 
 FullThrottle is helping solve and primarily focusing on the first question, which is "who" to target. We do this by transforming programmatic audiences into first-party household data as it relates to brands, so it becomes their own first-party data, stored in their CDP, and/or hosted in our activation platform. Now, the second part of the problem is "how" to find them.
 
-### How to Find Audiences
+### How do you reach audiences without third-party cookies?
 
 There are two versions of how to find these audiences.
 
@@ -43,7 +55,7 @@ However, Google has their own solution and it's in competition with TradeDesk. B
 
 The problem with finding one solution is that everyone wants to own it or have a piece of this solution. Everyone is a little competitive with each other and all are rushing to create their own versions of a resolution. And everyone is wondering whose solution is going to win.
 
-### Which Solution will Win?
+### Which cookieless solution will win?
 
 The reality of where this will end up will actually be a little simpler — no one is going to win. Everyone is going to have their own solution and it's going to be a bit fragmented.
 
@@ -85,7 +97,7 @@ It's true — we are not solving for a certain part, like the technology TradeDe
 
 But that's the point. We know others will figure it out. If you say you have data, these bigger companies will figure out a way to activate your data. It's their entire business. Google makes money on advertising. They are not going to shoot themselves in the foot. They're going to figure out a way. If you are insulated with your own data, you will be resilient and in many ways future-proof.
 
-### Why is This Really a Problem?
+### Why is this really a problem for a large organization?
 
 You might be wondering, is it something that will really affect me as a large organization?
 

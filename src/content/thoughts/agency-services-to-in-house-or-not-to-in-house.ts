@@ -8,13 +8,29 @@ export const thought: Thought = {
     "82% of brands now run an in-house agency, but only 26% handle their own programmatic. The mid-market doesn't need enterprise AI logic — it needs simplicity, agency partnerships, and platforms that thrive when brands need agility, not complexity.",
   linkedinUrl:
     "https://www.linkedin.com/pulse/agency-services-in-house-amol-waishampayan-vwrce",
+  answer:
+    "In-housing is not one-size-fits-all. The ANA reports 82% of brands now run some form of in-house agency, up from 58% in 2013, but only 26% handle their own programmatic buying. Mid-market brands, roughly $20M to $1B in revenue, do better pairing one simple platform with agency partners.",
+  faqs: [
+    {
+      q: "Should a mid-market brand bring media buying in-house?",
+      a: "The ANA reports that 82% of brands now operate some form of in-house agency, up from 58% in 2013. But dig deeper: only 26% of these teams handle their own programmatic buying.",
+    },
+    {
+      q: "Why do brands go back to agencies after in-housing?",
+      a: "Agencies are still where cross-pollination happens. They work across verticals, test new platforms earlier, and challenge stale strategies.",
+    },
+    {
+      q: "What do mid-market brands actually want from an AdTech platform?",
+      a: "Mid-market brands don't want a dozen tools stitched together. They want one platform that works. They don't want to rebuild a media department. They want results they can measure.",
+    },
+  ],
   coverImage: "/thoughts/agency-services-in-house-or-not.jpg",
   coverAlt: "Everything cycles, even in-housing",
   body: `The advertising industry is undeniably at an inflection point. Generative AI is reshaping how ads are created, transacted, and measured — and with it, comes a rising wave of in-housing amongst large brands.
 
 But here's the catch: most of the narrative around AI-led in-housing is centered on the enterprise tier — Fortune 500 brands with deep benches, tech stacks, and transformation budgets. The mid-market — the massive, underserved tier of brands and agencies operating between $20M and $1B in revenue — has fundamentally different needs, constraints, and opportunities.
 
-### In-Housing Isn't One-Size-Fits-All
+### Should a mid-market brand bring media buying in-house?
 
 The ANA reports that 82% of brands now operate some form of in-house agency, up from 58% in 2013. But dig deeper: only 26% of these teams handle their own programmatic buying. Why? Because running programmatic in-house is still complex, despite AI's promise.
 
@@ -34,7 +50,7 @@ But our advantage goes beyond technology. We're deeply embedded in the agency ec
 
 In our world, AI doesn't eliminate the agency — it amplifies it. It allows leaner teams to offer smarter strategy, tighter execution, and clearer reporting. It also enables agencies to expand margins without adding headcount — a huge win in a service-driven model.
 
-### The Agency Cycle Always Comes Back
+### Why do brands go back to agencies after in-housing?
 
 Even for Enterprise, In-housing works — until it doesn't. We've seen this movie before. In every cycle of marketing transformation, brands attempt to internalize capabilities to reduce cost, only to later re-lean on agencies when:
 
@@ -46,7 +62,7 @@ Even for Enterprise, In-housing works — until it doesn't. We've seen this movi
 
 Agencies are still where cross-pollination happens. They work across verticals, test new platforms earlier, and challenge stale strategies. And when AI levels the playing field in execution, strategy composed from exposure, iteration, and failures becomes the real differentiator again — which agencies are well-equipped to provide.
 
-### A Call for a Mid-Market Playbook
+### What do mid-market brands actually want from an AdTech platform?
 
 AI is a game-changer. But applying enterprise AI logic to the mid-market misses the nuance. Mid-market brands don't want a dozen tools stitched together. They want one platform that works. They don't want to rebuild a media department. They want results they can measure. And they don't want to pick between AI and agencies. They want the best of both.
 

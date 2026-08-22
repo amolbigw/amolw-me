@@ -9,6 +9,26 @@ export const thought: Thought = {
     "From 90 days of CFO conversations: a checklist of the controls a mid-market agency should expect from its AdTech stack — single source of truth, margin guardrails, structured concessions, account-level economics, and forecasting that gets tighter, not louder.",
   linkedinUrl:
     "https://www.linkedin.com/pulse/mid-market-agency-cfo-playbook-2026-controls-you-your-waishampayan-rjome",
+  answer:
+    "A mid-market agency should expect seven controls from its AdTech platform: one reconciled source of truth, margin guardrails inside the workflow, structured concession handling, account-level profitability after labor, separate agency and platform economics, forecasting that tightens monthly, and automation that adds audit trails rather than black boxes.",
+  faqs: [
+    {
+      q: "What margin controls should an AdTech platform give a mid-market agency?",
+      a: "In fee thin models, margin is lost in small leaks, not big decisions. The platform should reduce leakage by default.",
+    },
+    {
+      q: "How should an agency handle credits, discounts, and make-goods?",
+      a: "Credits, discounts, and make goods are normal. The problem is when they are unmanaged.",
+    },
+    {
+      q: "How do you measure client profitability at the account level?",
+      a: 'Agencies do not lose money "overall." They lose it on a subset of accounts and do not see it fast enough.',
+    },
+    {
+      q: "What does good forecasting look like for an agency CFO?",
+      a: "A CFO's job is not to create perfect forecasts. It is to reduce surprise.",
+    },
+  ],
   coverImage: "/thoughts/mid-market-agency-cfo-playbook-2026.jpg",
   coverAlt:
     "Overwhelmed CFO in a futuristic command chair with thousands of levers, controls, and options",
@@ -30,7 +50,7 @@ Your ad platform should enable:
 
 > One Reality One Mind
 
-### Margin guardrails built into workflow
+### What margin controls should an AdTech platform give a mid-market agency?
 
 **In fee thin models, margin is lost in small leaks, not big decisions. The platform should reduce leakage by default.**
 
@@ -40,7 +60,7 @@ Controls to expect:
 - Transparent visibility into delivery variance, pacing, and cost shifts
 - The ability to spot margin drift early, not after month end
 
-### Concessions that are structured, not chaotic
+### How should an agency handle credits, discounts, and make-goods?
 
 **Credits, discounts, and make goods are normal. The problem is when they are unmanaged.**
 
@@ -50,7 +70,7 @@ Platform expectations:
 - An approval workflow that is embedded in the operating process
 - A simple way to understand margin payback: how long it takes to earn back a concession
 
-### Client economics you can trust at the account level
+### How do you measure client profitability at the account level?
 
 **Agencies do not lose money "overall." They lose it on a subset of accounts and do not see it fast enough.**
 
@@ -71,7 +91,7 @@ Two lenses that should exist in the platform:
 
 > Reduce Surprise with the Sun Tzu (Strategic Preparedness) Mindset
 
-### Forecasting that behaves like a discipline, not a debate
+### What does good forecasting look like for an agency CFO?
 
 **A CFO's job is not to create perfect forecasts. It is to reduce surprise.**
 
