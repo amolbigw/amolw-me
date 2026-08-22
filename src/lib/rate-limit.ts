@@ -18,8 +18,19 @@ import { Redis } from "@upstash/redis";
 const LIMIT = 10;
 const WINDOW = "1 h" as const;
 
-const url = process.env.UPSTASH_REDIS_REST_URL;
-const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+/**
+ * Both naming conventions, because which one you get depends on how Redis was
+ * provisioned and the difference is silent:
+ *
+ *   - Installed from the Vercel Marketplace -> KV_REST_API_URL / _TOKEN
+ *   - Configured against Upstash directly   -> UPSTASH_REDIS_REST_URL / _TOKEN
+ *
+ * Reading only one pair means a Marketplace install looks unconfigured, and
+ * since this limiter fails closed in production that would take Ask Amol down
+ * for everyone with a 503 rather than rate limiting anything.
+ */
+const url = process.env.UPSTASH_REDIS_REST_URL ?? process.env.KV_REST_API_URL;
+const token = process.env.UPSTASH_REDIS_REST_TOKEN ?? process.env.KV_REST_API_TOKEN;
 const configured = Boolean(url && token);
 
 const limiter = configured

@@ -24,8 +24,8 @@ settings for production and in a local `.env.local` for development.
 | Variable | Required | Purpose |
 |---|---|---|
 | `OPENAI_API_KEY` | Yes, for Ask Amol | Server-side only. `/api/ask` returns a friendly 503 without it, so the rest of the site is unaffected. |
-| `UPSTASH_REDIS_REST_URL` | Yes in production | IP rate limiting for `/api/ask`. |
-| `UPSTASH_REDIS_REST_TOKEN` | Yes in production | Paired with the URL above. |
+| `UPSTASH_REDIS_REST_URL` or `KV_REST_API_URL` | Yes in production | Redis for `/api/ask` IP rate limiting. Either name works: the Vercel Marketplace install injects the `KV_*` pair, a direct Upstash setup uses the `UPSTASH_*` pair. |
+| `UPSTASH_REDIS_REST_TOKEN` or `KV_REST_API_TOKEN` | Yes in production | Paired with the URL above. |
 | `ASK_RATE_LIMIT_SALT` | Recommended | Any long random string. Salts the IP hash used as the rate-limit key so Redis never holds a reversible address. |
 
 `/api/ask` **fails closed**: if the Upstash variables are missing in
