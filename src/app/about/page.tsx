@@ -1,11 +1,30 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionLabel } from "@/components/SectionLabel";
+import { JsonLd } from "@/components/JsonLd";
+import { pageMeta } from "@/lib/seo";
+import { site, absoluteUrl } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About · Amol Waishampayan",
+export const metadata: Metadata = pageMeta({
+  title: "About",
   description:
-    "Co-founder at fullthrottle.ai, running the business day to day across revenue, sales, customer success, product, engineering, and operations. One exit, three issued patents.",
+    "Lifelong entrepreneur running fullthrottle.ai end to end. One exit, three issued patents, and a decade across the agency and brand side of global marketing.",
+  path: "/about",
+});
+
+const profileSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: absoluteUrl("/about"),
+  name: `About ${site.name}`,
+  mainEntity: {
+    "@id": `${site.url}/#person`,
+    alumniOf: [
+      { "@type": "Organization", name: "Stream Companies" },
+      { "@type": "Organization", name: "Maiden Media Group" },
+      { "@type": "Organization", name: "Unilever" },
+    ],
+  },
 };
 
 const timeline = [
@@ -46,6 +65,7 @@ const facts = [
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-6xl px-6">
+      <JsonLd data={profileSchema} />
       <section className="pt-20 pb-20">
         <SectionLabel index="00">About</SectionLabel>
         <div className="mt-6 grid gap-10 sm:grid-cols-12 sm:items-end sm:gap-12">
@@ -57,7 +77,7 @@ export default function AboutPage() {
           <div className="sm:col-span-4 relative aspect-[4/5] w-full max-w-[260px] mx-auto sm:max-w-none overflow-hidden border border-[var(--border)]">
             <Image
               src="/amol_waishampayan.jpg"
-              alt="Amol Waishampayan"
+              alt="Amol Waishampayan, co-founder of fullthrottle.ai"
               fill
               sizes="(min-width: 1280px) 384px, (min-width: 640px) 33vw, 260px"
               className="object-cover"

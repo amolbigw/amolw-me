@@ -1,9 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
 import { PressRow } from "@/components/PressRow";
 import { VantaGlobe } from "@/components/VantaGlobe";
 import { press } from "@/lib/press";
 import { thoughts } from "@/lib/thoughts";
+import { pageMeta } from "@/lib/seo";
+import { site, absoluteUrl } from "@/lib/site";
+
+export const metadata: Metadata = {
+  ...pageMeta({
+    title: site.title,
+    description: site.description,
+    path: "/",
+    absoluteTitle: true,
+  }),
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": absoluteUrl("/thoughts/rss.xml") },
+  },
+};
 
 export default function Home() {
   const featuredPress = press.slice(0, 5);

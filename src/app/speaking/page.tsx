@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { SectionLabel } from "@/components/SectionLabel";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Speaking · Amol Waishampayan",
+export const metadata: Metadata = pageMeta({
+  title: "Talks & Interviews",
   description:
-    "Speaking on first-party data, CTV attribution, AI in marketing, and the post-cookie web.",
-};
+    "Keynotes, panels, and podcasts on first-party data, CTV attribution, AI for marketers, and the post-cookie web. Talks from an operator, not a theorist.",
+  path: "/speaking",
+});
 
 const topics = [
   {

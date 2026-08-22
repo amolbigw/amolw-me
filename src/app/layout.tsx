@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Header } from "@/components/Header";
+import { JsonLd } from "@/components/JsonLd";
+import { site, socialProfiles, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,18 +19,75 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Amol Waishampayan",
-  description:
-    "Co-founder at fullthrottle.ai, running the business across revenue, product, engineering, and operations. Writing about AI, identity, and the next era of marketing.",
-  metadataBase: new URL("https://amolw.me"),
-  openGraph: {
-    title: "Amol Waishampayan",
-    description:
-      "Co-founder at fullthrottle.ai, running the business across revenue, product, engineering, and operations. Writing about AI, identity, and the next era of marketing.",
-    url: "https://amolw.me",
-    siteName: "Amol Waishampayan",
-    type: "website",
+  metadataBase: new URL(site.url),
+  // Pages set a short title; this template appends the name. Pages that want
+  // the title verbatim use `title.absolute` (see src/lib/seo.ts).
+  title: { default: site.title, template: `%s · ${site.name}` },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  keywords: [...site.keywords],
+  category: "technology",
+  formatDetection: { telephone: false, address: false },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
+};
+
+/**
+ * Rendered on every page so the `@id` references used by the per-page
+ * BlogPosting / Blog / CollectionPage nodes always resolve.
+ */
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${site.url}/#person`,
+  name: site.name,
+  url: site.url,
+  image: absoluteUrl("/amol_waishampayan.jpg"),
+  jobTitle: site.role,
+  description: site.description,
+  email: `mailto:${site.email}`,
+  worksFor: {
+    "@type": "Organization",
+    name: site.company,
+    url: site.companyUrl,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.locality,
+    addressRegion: site.region,
+    addressCountry: site.country,
+  },
+  knowsAbout: [...site.knowsAbout],
+  sameAs: socialProfiles,
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  url: site.url,
+  name: site.name,
+  description: site.description,
+  inLanguage: "en-US",
+  author: { "@id": `${site.url}/#person` },
+  publisher: { "@id": `${site.url}/#person` },
 };
 
 export default function RootLayout({
@@ -40,6 +99,8 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <JsonLd data={personSchema} />
+        <JsonLd data={websiteSchema} />
         <ParticleBackground />
         <Header />
 

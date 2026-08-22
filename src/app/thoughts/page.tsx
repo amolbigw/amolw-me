@@ -2,17 +2,47 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
+import { JsonLd } from "@/components/JsonLd";
 import { thoughts } from "@/lib/thoughts";
+import { pageMeta } from "@/lib/seo";
+import { site, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Thoughts · Amol Waishampayan",
+  ...pageMeta({
+    title: "Writing & Experiments: AI, Identity & First-Party Data",
+    description: `Essays on AI, identity, first-party data, and the next era of marketing. ${thoughts.length} pieces by ${site.name}, mirrored from LinkedIn.`,
+    path: "/thoughts",
+  }),
+  alternates: {
+    canonical: "/thoughts",
+    types: { "application/rss+xml": absoluteUrl("/thoughts/rss.xml") },
+  },
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": `${site.url}/thoughts#blog`,
+  url: absoluteUrl("/thoughts"),
+  name: `Thoughts · ${site.name}`,
   description:
-    "Essays on AI, identity, first-party data, and the next era of marketing — originally published on LinkedIn.",
+    "Essays on AI, identity, first-party data, and the next era of marketing.",
+  inLanguage: "en-US",
+  author: { "@id": `${site.url}/#person` },
+  blogPost: thoughts.map((t) => ({
+    "@type": "BlogPosting",
+    headline: t.title,
+    description: t.excerpt,
+    url: absoluteUrl(`/thoughts/${t.slug}`),
+    datePublished: t.date,
+    author: { "@id": `${site.url}/#person` },
+  })),
 };
 
 export default function ThoughtsPage() {
   return (
     <div className="mx-auto max-w-6xl px-6">
+      <JsonLd data={blogSchema} />
       <section className="pt-20 pb-16">
         <SectionLabel index="02">Thoughts</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium">

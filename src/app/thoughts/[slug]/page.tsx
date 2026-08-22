@@ -5,7 +5,10 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SectionLabel } from "@/components/SectionLabel";
+import { JsonLd } from "@/components/JsonLd";
 import { getThought, getAllThoughtSlugs } from "@/lib/thoughts";
+import { pageMeta } from "@/lib/seo";
+import { site, absoluteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return getAllThoughtSlugs().map((slug) => ({ slug }));
@@ -17,17 +20,15 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const t = getThought(slug);
   if (!t) return {};
-  return {
-    title: `${t.title} · Amol Waishampayan`,
+  return pageMeta({
+    title: t.title,
     description: t.excerpt,
-    openGraph: {
-      title: t.title,
-      description: t.excerpt,
-      images: t.coverImage ? [t.coverImage] : undefined,
-      type: "article",
+    path: `/thoughts/${slug}`,
+    article: {
       publishedTime: t.date,
+      images: t.coverImage ? [t.coverImage] : undefined,
     },
-  };
+  });
 }
 
 export default async function ThoughtPage(
@@ -43,8 +44,42 @@ export default async function ThoughtPage(
     day: "numeric",
   });
 
+  const url = absoluteUrl(`/thoughts/${slug}`);
+
+  const postSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: t.title,
+    description: t.excerpt,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    datePublished: t.date,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${site.url}/thoughts#blog` },
+    author: { "@id": `${site.url}/#person` },
+    publisher: { "@id": `${site.url}/#person` },
+    ...(t.coverImage ? { image: absoluteUrl(t.coverImage) } : {}),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Thoughts",
+        item: absoluteUrl("/thoughts"),
+      },
+      { "@type": "ListItem", position: 3, name: t.title, item: url },
+    ],
+  };
+
   return (
     <article className="mx-auto max-w-3xl px-6">
+      <JsonLd data={postSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <div className="pt-16 pb-8">
         <Link
           href="/thoughts"
