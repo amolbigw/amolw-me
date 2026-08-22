@@ -114,7 +114,7 @@ export function Header() {
                 <span>{item.label}</span>
                 <span
                   aria-hidden
-                  className={active ? "text-[var(--accent)]" : "text-[var(--border)]"}
+                  className={active ? "text-[var(--accent)]" : "text-[var(--muted)]"}
                 >
                   →
                 </span>

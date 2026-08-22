@@ -29,10 +29,15 @@ export default function Home() {
     <>
       {/* Hero — full-bleed Vanta globe behind, content layered above */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,black_70%,transparent)]">
+        <div className="hero-backdrop absolute inset-0">
           <VantaGlobe />
         </div>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[var(--background)] via-transparent to-[var(--background)] opacity-60" />
+        {/* Right-edge vignette only. The copy column is protected by the mask
+            on .hero-backdrop, not by dimming the text's own backdrop. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-l from-[var(--background)] to-transparent to-25%"
+        />
         <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-28 sm:pb-40">
           <div className="reveal">
           <div className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
@@ -64,19 +69,19 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-widest">
             <Link
               href="/about"
-              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border-strong)] bg-[var(--background)]/70 px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               About →
             </Link>
             <Link
               href="/thoughts"
-              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border-strong)] bg-[var(--background)]/70 px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               Read writing
             </Link>
             <a
               href="mailto:amolbigw@gmail.com"
-              className="inline-flex min-h-11 items-center border border-[var(--border)] px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              className="inline-flex min-h-11 items-center border border-[var(--border-strong)] bg-[var(--background)]/70 px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
             >
               Get in touch
             </a>

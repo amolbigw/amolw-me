@@ -4,8 +4,14 @@
 :root {
   --background: #0a0a0b;
   --foreground: #e8e8e6;
-  --muted: #8a8a86;
-  --border: #1f1f1e;
+  /* 8.3:1 on --background. Carries most of the body copy on this site, so it
+     needs to clear AAA, not just AA. */
+  --muted: #a8a8a3;
+  /* Decorative hairlines and grid gutters only. 1.4:1 — never load-bearing. */
+  --border: #2a2a28;
+  /* 3:1 on --background — the WCAG 1.4.11 floor for a control boundary the
+     user has to see (outlined buttons, icon chips). */
+  --border-strong: #5d5d5a;
   --accent: #009ef0;
 }
 
@@ -14,6 +20,7 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
@@ -45,6 +52,51 @@ body {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 1px;
+}
+
+/* Fades the animated globe out of the copy column so the hero text sits on
+   flat --background instead of on moving grid lines. The globe draws its lines
+   in --accent and a mid grey, both within ~1.2:1 of the body copy, so any
+   overlap makes glyphs vanish wherever a line crosses them.
+
+   The stops track where the copy column actually ends: --hero-clear is fully
+   masked, --hero-full is fully visible. Below 1280px the max-w-2xl paragraph
+   runs most of the viewport, so the reveal is pushed further right and the
+   whole layer is dimmed. */
+.hero-backdrop {
+  --hero-clear: 52%;
+  --hero-mid: 64%;
+  --hero-full: 85%;
+  --hero-mid-alpha: 0.32;
+
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      transparent var(--hero-clear),
+      rgba(0, 0, 0, var(--hero-mid-alpha)) var(--hero-mid),
+      #000 var(--hero-full)
+    );
+  mask-image: linear-gradient(to bottom, #000 70%, transparent),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      transparent var(--hero-clear),
+      rgba(0, 0, 0, var(--hero-mid-alpha)) var(--hero-mid),
+      #000 var(--hero-full)
+    );
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+@media (max-width: 1279px) {
+  .hero-backdrop {
+    --hero-clear: 62%;
+    --hero-mid: 76%;
+    --hero-full: 94%;
+    --hero-mid-alpha: 0.22;
+    opacity: 0.6;
+  }
 }
 
 @keyframes reveal-up {

@@ -42,7 +42,7 @@ export function PressRow({ item }: { item: PressItem }) {
             <span>{dateLabel}</span>
             <span
               aria-hidden
-              className="inline-flex h-5 w-5 items-center justify-center border border-[var(--border)] text-[10px] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] transition-colors"
+              className="inline-flex h-5 w-5 items-center justify-center border border-[var(--border-strong)] text-[10px] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] transition-colors"
             >
               ↗
             </span>
