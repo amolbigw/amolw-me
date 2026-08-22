@@ -16,6 +16,27 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Environment variables
+
+`.env*` is gitignored, so this is the reference. Set these in Vercel project
+settings for production and in a local `.env.local` for development.
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `OPENAI_API_KEY` | Yes, for Ask Amol | Server-side only. `/api/ask` returns a friendly 503 without it, so the rest of the site is unaffected. |
+| `UPSTASH_REDIS_REST_URL` | Yes in production | IP rate limiting for `/api/ask`. |
+| `UPSTASH_REDIS_REST_TOKEN` | Yes in production | Paired with the URL above. |
+| `ASK_RATE_LIMIT_SALT` | Recommended | Any long random string. Salts the IP hash used as the rate-limit key so Redis never holds a reversible address. |
+
+`/api/ask` **fails closed**: if the Upstash variables are missing in
+production it refuses requests rather than serving an unmetered endpoint
+backed by a paid API key. In development it allows requests through so the
+feature works offline.
+
+Before Ask Amol goes live, set a hard monthly budget cap and a spend alert in
+the OpenAI dashboard. The rate limit bounds one caller; the budget cap is what
+bounds the bill.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

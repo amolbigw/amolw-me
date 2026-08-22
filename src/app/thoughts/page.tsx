@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
+import { AskAmol } from "@/components/AskAmol";
 import { JsonLd } from "@/components/JsonLd";
 import { thoughts } from "@/lib/thoughts";
 import { pageMeta } from "@/lib/seo";
@@ -54,6 +55,9 @@ export default function ThoughtsPage() {
           marketing. Each piece is mirrored here from LinkedIn — a permanent
           home for thinking that tends to disappear into the feed.
         </p>
+        <div className="mt-12">
+          <AskAmol />
+        </div>
       </section>
 
       <section className="pb-32">

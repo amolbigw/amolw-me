@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SectionLabel } from "@/components/SectionLabel";
 import { PressRow } from "@/components/PressRow";
 import { VantaGlobe } from "@/components/VantaGlobe";
+import { AskAmol } from "@/components/AskAmol";
 import { press } from "@/lib/press";
 import { thoughts } from "@/lib/thoughts";
 import { pageMeta } from "@/lib/seo";
@@ -91,10 +92,18 @@ export default function Home() {
       </section>
 
       <div className="mx-auto max-w-6xl px-6">
+      {/* Ask Amol */}
+      <section className="pb-32">
+        <SectionLabel index="01">Ask Amol</SectionLabel>
+        <div className="mt-10">
+          <AskAmol />
+        </div>
+      </section>
+
       {/* Press */}
       <section className="pb-32">
         <div className="flex items-end justify-between mb-10">
-          <SectionLabel index="01">Selected press</SectionLabel>
+          <SectionLabel index="02">Selected press</SectionLabel>
           <Link
             href="/news"
             className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
@@ -112,7 +121,7 @@ export default function Home() {
       {/* Thoughts */}
       <section className="pb-32">
         <div className="flex items-end justify-between mb-10">
-          <SectionLabel index="02">Recent writing</SectionLabel>
+          <SectionLabel index="03">Recent writing</SectionLabel>
           <Link
             href="/thoughts"
             className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
@@ -150,7 +159,7 @@ export default function Home() {
 
       {/* Currently */}
       <section className="pb-32">
-        <SectionLabel index="03">Currently</SectionLabel>
+        <SectionLabel index="04">Currently</SectionLabel>
         <div className="mt-10 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <div className="bg-[var(--background)] p-8">
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
