@@ -46,8 +46,10 @@ export default function SpeakingPage() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-[var(--muted)]">
           I speak at industry events, on podcasts, and to press on the topics
-          below. If you're putting something together, I'd love to hear about
-          it.
+          below, from the operator&apos;s seat: I run fullthrottle.ai day to day, so
+          the examples are live revenue, product, and engineering decisions
+          rather than theory. If you&apos;re putting something together, I&apos;d love to
+          hear about it.
         </p>
       </section>
 
@@ -86,8 +88,8 @@ export default function SpeakingPage() {
         <SectionLabel index="06">Get in touch</SectionLabel>
         <div className="mt-8 border border-[var(--border)] p-6 sm:p-12">
           <p className="text-lg sm:text-2xl leading-snug max-w-2xl">
-            Send a brief — date, audience, format, and anything specific you'd
-            want covered. I'll get back within a few days.
+            Send a brief — date, audience, format, and anything specific you&apos;d
+            want covered. I&apos;ll get back within a few days.
           </p>
           <a
             href="mailto:amolbigw@gmail.com?subject=Speaking inquiry"

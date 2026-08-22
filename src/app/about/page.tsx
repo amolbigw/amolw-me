@@ -5,15 +5,15 @@ import { SectionLabel } from "@/components/SectionLabel";
 export const metadata: Metadata = {
   title: "About · Amol Waishampayan",
   description:
-    "Co-founder & CPO at fullthrottle.ai. Lifelong entrepreneur with one exit and two patents in first-party data and ad attribution.",
+    "Co-founder at fullthrottle.ai, running the business day to day across revenue, sales, customer success, product, engineering, and operations. One exit, two issued patents.",
 };
 
 const timeline = [
   {
     period: "2020 — Now",
-    role: "Co-founder & CPO",
+    role: "Co-founder",
     org: "fullthrottle.ai",
-    body: "Identity, attribution, and AI tooling for marketers. Two issued patents on first-party data and CTV attribution.",
+    body: "Run the business day to day: revenue, sales, and customer success; product, engineering, and operations; and the board. Two issued patents help protect the core methodologies the platform is built on.",
   },
   {
     period: "2016 — 2020",
@@ -39,7 +39,8 @@ const facts = [
   { label: "Patents", value: "2 issued" },
   { label: "Exits", value: "1" },
   { label: "Based", value: "Philadelphia" },
-  { label: "Focus", value: "AI · CTV · 1P data" },
+  { label: "Remit", value: "Revenue · Product · Eng · Ops · Board" },
+  { label: "Focus", value: "AI · CTV · first-party data" },
 ];
 
 export default function AboutPage() {
@@ -51,7 +52,7 @@ export default function AboutPage() {
           <h1 className="sm:col-span-8 font-sans text-[clamp(2rem,4.5vw,4rem)] leading-[1.02] tracking-tight font-medium">
             Lifelong{" "}
             <span className="text-[var(--accent)]">entrepreneur</span>,
-            currently building at the seam of AI and addressable TV.
+            currently running a company at the seam of AI and addressable TV.
           </h1>
           <div className="sm:col-span-4 relative aspect-[4/5] w-full max-w-[260px] mx-auto sm:max-w-none overflow-hidden border border-[var(--border)]">
             <Image
@@ -70,7 +71,7 @@ export default function AboutPage() {
         <div className="grid gap-12 sm:grid-cols-3">
           <div className="sm:col-span-2 space-y-6 text-lg leading-relaxed text-[var(--foreground)]">
             <p>
-              I&apos;m co-founder and Chief Product Officer at{" "}
+              I co-founded{" "}
               <a
                 href="https://fullthrottle.ai"
                 target="_blank"
@@ -78,8 +79,13 @@ export default function AboutPage() {
                 className="text-[var(--accent)] underline-offset-4 hover:underline"
               >
                 fullthrottle.ai
-              </a>
-              . As a lifelong entrepreneur, my path includes a successful exit
+              </a>{" "}
+              and I run it day to day. In any given week that means revenue and
+              pipeline, sales and customer success, the product roadmap, the
+              engineering org, day-to-day operations, and the board.
+            </p>
+            <p>
+              As a lifelong entrepreneur, my path includes a successful exit
               with my first start-up and more than a decade on both the agency
               and client side of global brands.
             </p>

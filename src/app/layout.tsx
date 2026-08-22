@@ -19,12 +19,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Amol Waishampayan",
   description:
-    "Co-founder & CPO at fullthrottle.ai. Writing about AI, identity, and the next era of marketing.",
+    "Co-founder at fullthrottle.ai, running the business across revenue, product, engineering, and operations. Writing about AI, identity, and the next era of marketing.",
   metadataBase: new URL("https://amolw.me"),
   openGraph: {
     title: "Amol Waishampayan",
     description:
-      "Co-founder & CPO at fullthrottle.ai. Writing about AI, identity, and the next era of marketing.",
+      "Co-founder at fullthrottle.ai, running the business across revenue, product, engineering, and operations. Writing about AI, identity, and the next era of marketing.",
     url: "https://amolw.me",
     siteName: "Amol Waishampayan",
     type: "website",

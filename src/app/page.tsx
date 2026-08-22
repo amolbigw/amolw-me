@@ -21,7 +21,7 @@ export default function Home() {
           <div className="reveal">
           <div className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <span className="text-[var(--accent)]">●</span>
-            <span className="ml-3">Co-founder · CPO · fullthrottle.ai</span>
+            <span className="ml-3">Co-founder · Running fullthrottle.ai</span>
           </div>
 
           <h1 className="font-sans text-[clamp(3rem,9vw,7.5rem)] leading-[0.95] tracking-tight font-medium">
@@ -31,12 +31,18 @@ export default function Home() {
           </h1>
 
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-relaxed text-[var(--muted)]">
-            I build product at the seam between{" "}
-            <span className="text-[var(--foreground)]">first-party data</span>,{" "}
-            <span className="text-[var(--foreground)]">AI</span>, and{" "}
-            <span className="text-[var(--foreground)]">television</span>. Two
-            patents, one exit, and roughly a decade convincing brands that the
-            household — not the cookie — is the unit of attention.
+            I run <span className="text-[var(--foreground)]">fullthrottle.ai</span>{" "}
+            day to day:{" "}
+            <span className="text-[var(--foreground)]">
+              revenue, sales, and customer success
+            </span>{" "}
+            on one side,{" "}
+            <span className="text-[var(--foreground)]">
+              product, engineering, and operations
+            </span>{" "}
+            on the other, board meetings in between. Two patents, one exit, and
+            roughly a decade convincing brands that the household, not the
+            cookie, is the unit of attention.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-widest">
@@ -124,13 +130,12 @@ export default function Home() {
       {/* Currently */}
       <section className="pb-32">
         <SectionLabel index="03">Currently</SectionLabel>
-        <div className="mt-10 grid gap-px bg-[var(--border)] sm:grid-cols-2">
+        <div className="mt-10 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <div className="bg-[var(--background)] p-8">
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
-              Building
+              Running
             </div>
             <p className="text-base leading-relaxed">
-              Identity, attribution, and AI tooling for marketers at{" "}
               <a
                 href="https://fullthrottle.ai"
                 target="_blank"
@@ -139,7 +144,17 @@ export default function Home() {
               >
                 fullthrottle.ai
               </a>
-              . Two issued patents to date.
+              , end to end: revenue and pipeline, sales and customer success,
+              product and engineering, day-to-day operations, and the board.
+            </p>
+          </div>
+          <div className="bg-[var(--background)] p-8">
+            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
+              Building
+            </div>
+            <p className="text-base leading-relaxed">
+              Identity, attribution, and AI tooling for marketers. Two issued
+              patents to date.
             </p>
           </div>
           <div className="bg-[var(--background)] p-8">
