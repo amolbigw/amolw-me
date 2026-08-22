@@ -40,8 +40,8 @@ export default function Home() {
             <span className="text-[var(--foreground)]">
               product, engineering, and operations
             </span>{" "}
-            on the other, board meetings in between. Two patents, one exit, and
-            roughly a decade convincing brands that the household, not the
+            on the other, board meetings in between. Three patents, one exit,
+            and roughly a decade convincing brands that the household, not the
             cookie, is the unit of attention.
           </p>
 
@@ -144,8 +144,8 @@ export default function Home() {
               >
                 fullthrottle.ai
               </a>
-              , end to end: revenue and pipeline, sales and customer success,
-              product and engineering, day-to-day operations, and the board.
+              , end to end: revenue, sales, customer success, product,
+              engineering, operations, and the board.
             </p>
           </div>
           <div className="bg-[var(--background)] p-8">
@@ -153,7 +153,7 @@ export default function Home() {
               Building
             </div>
             <p className="text-base leading-relaxed">
-              Identity, attribution, and AI tooling for marketers. Two issued
+              Identity, attribution, and AI tooling for marketers. Three issued
               patents to date.
             </p>
           </div>

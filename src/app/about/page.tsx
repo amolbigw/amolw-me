@@ -5,7 +5,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 export const metadata: Metadata = {
   title: "About · Amol Waishampayan",
   description:
-    "Co-founder at fullthrottle.ai, running the business day to day across revenue, sales, customer success, product, engineering, and operations. One exit, two issued patents.",
+    "Co-founder at fullthrottle.ai, running the business day to day across revenue, sales, customer success, product, engineering, and operations. One exit, three issued patents.",
 };
 
 const timeline = [
@@ -13,7 +13,7 @@ const timeline = [
     period: "2020 — Now",
     role: "Co-founder",
     org: "fullthrottle.ai",
-    body: "Run the business day to day: revenue, sales, and customer success; product, engineering, and operations; and the board. Two issued patents help protect the core methodologies the platform is built on.",
+    body: "Run the business day to day: revenue, sales, and customer success; product, engineering, and operations; and the board. Three issued patents help protect the core methodologies the platform is built on.",
   },
   {
     period: "2016 — 2020",
@@ -36,10 +36,10 @@ const timeline = [
 ];
 
 const facts = [
-  { label: "Patents", value: "2 issued" },
+  { label: "Patents", value: "3 issued" },
   { label: "Exits", value: "1" },
   { label: "Based", value: "Philadelphia" },
-  { label: "Remit", value: "Revenue · Product · Eng · Ops · Board" },
+  { label: "Remit", value: "Revenue · Sales · CS · Product · Eng · Ops · Board" },
   { label: "Focus", value: "AI · CTV · first-party data" },
 ];
 
@@ -80,9 +80,9 @@ export default function AboutPage() {
               >
                 fullthrottle.ai
               </a>{" "}
-              and I run it day to day. In any given week that means revenue and
-              pipeline, sales and customer success, the product roadmap, the
-              engineering org, day-to-day operations, and the board.
+              and I run it day to day. Revenue, sales, customer success,
+              product, engineering, and operations all sit in my remit, along
+              with the board.
             </p>
             <p>
               As a lifelong entrepreneur, my path includes a successful exit

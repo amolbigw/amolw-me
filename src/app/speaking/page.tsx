@@ -47,8 +47,8 @@ export default function SpeakingPage() {
         <p className="mt-6 max-w-2xl text-lg text-[var(--muted)]">
           I speak at industry events, on podcasts, and to press on the topics
           below, from the operator&apos;s seat: I run fullthrottle.ai day to day, so
-          the examples are live revenue, product, and engineering decisions
-          rather than theory. If you&apos;re putting something together, I&apos;d love to
+          the examples come from live decisions across revenue, product,
+          engineering, and operations rather than theory. If you&apos;re putting something together, I&apos;d love to
           hear about it.
         </p>
       </section>
