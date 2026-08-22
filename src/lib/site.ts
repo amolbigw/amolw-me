@@ -12,7 +12,7 @@ export const site = {
   region: "PA",
   country: "US",
   email: "amolbigw@gmail.com",
-  linkedin: "https://www.linkedin.com/in/amolwaishampayan",
+  linkedin: "https://www.linkedin.com/in/amolw",
   instagram: "https://www.instagram.com/amolw",
   title: "Amol Waishampayan · Co-founder, fullthrottle.ai",
   description:

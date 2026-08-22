@@ -174,7 +174,7 @@ export default function AboutPage() {
             <div className="mt-2 text-base break-all">amolbigw@gmail.com</div>
           </a>
           <a
-            href="https://www.linkedin.com/in/amolwaishampayan"
+            href={site.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
@@ -182,7 +182,7 @@ export default function AboutPage() {
             <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               LinkedIn
             </div>
-            <div className="mt-2 text-base">/in/amolwaishampayan</div>
+            <div className="mt-2 text-base">/in/amolw</div>
           </a>
           <a
             href="https://www.instagram.com/amolw"

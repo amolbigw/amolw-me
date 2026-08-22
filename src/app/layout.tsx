@@ -114,20 +114,12 @@ export default function RootLayout({
             </div>
             <div className="flex gap-6 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
               <a
-                href="https://www.linkedin.com/in/amolwaishampayan"
+                href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="-my-2 py-2 hover:text-[var(--accent)] transition-colors"
               >
                 LinkedIn
-              </a>
-              <a
-                href="https://www.instagram.com/amolw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="-my-2 py-2 hover:text-[var(--accent)] transition-colors"
-              >
-                Instagram
               </a>
               <a
                 href="mailto:amolbigw@gmail.com"
