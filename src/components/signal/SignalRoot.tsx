@@ -47,6 +47,7 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
       top: number;
       travel: number;
       last: number;
+      lastApproach: number;
     };
     type Echo = { el: HTMLElement; top: number; on: boolean };
 
@@ -96,6 +97,7 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
           top: r.top + sy,
           travel: Math.max(1, (stuck * n) / (n + pacing.tailRatio)),
           last: -1,
+          lastApproach: -1,
         };
       }
 
@@ -121,30 +123,39 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
 
       for (const row of rows) {
         const p = clamp((head - row.top) / row.height);
+        // Only the stroke write is worth skipping when nothing moved. The
+        // state below must not sit inside that guard: p pins at 1 once the row
+        // is fully drawn, so anything gated on p changing can never fire
+        // afterwards — which is what used to strand the artifact recede.
         if (p !== row.last) {
           row.last = p;
           row.el.style.setProperty("--draw", p.toFixed(4));
-          // 0 waiting · 1 active · 2 passed, artifact receding
-          const state =
-            (tail - row.top) / row.height >= 1 ? "2" : p > 0.02 ? "1" : "0";
-          if (row.el.dataset.on !== state) row.el.dataset.on = state;
         }
+        // 0 waiting · 1 active · 2 passed, artifact receding
+        const state =
+          (tail - row.top) / row.height >= 1 ? "2" : p > 0.02 ? "1" : "0";
+        if (row.el.dataset.on !== state) row.el.dataset.on = state;
       }
 
       if (scale) {
         const p = clamp((sy - scale.top) / scale.travel);
-        if (p !== scale.last) {
+        // How far the panel has risen into view, 0 → 1, finishing exactly as it
+        // sticks. The first beat resolves over this instead of over its own
+        // scroll window: p is pinned at 0 for the whole approach, so without it
+        // a viewport rises through the screen with nothing in it.
+        //
+        // Which is also why the guard below has to watch both. p not changing
+        // is precisely the condition during the approach, so guarding on p
+        // alone skipped every frame of it and the figure only appeared once the
+        // panel had already stuck.
+        const approach = clamp((sy - (scale.top - vh)) / vh);
+        if (p !== scale.last || approach !== scale.lastApproach) {
           scale.last = p;
+          scale.lastApproach = approach;
           scale.el.style.setProperty("--p", p.toFixed(4));
 
           const n = scale.beats.length;
           const bp = p * n;
-          // How far the panel has risen into view, 0 → 1, finishing exactly as
-          // it sticks. The first beat resolves over this instead of over its
-          // own scroll window: progress is pinned at 0 until the panel is
-          // stuck, so without it a whole viewport rises through the screen
-          // with nothing in it — a hole between NOW and the first figure.
-          const approach = clamp((sy - (scale.top - vh)) / vh);
           for (let i = 0; i < n; i++) {
             const lp = bp - i;
             // Enter and exit windows do not overlap between neighbours, so two
@@ -154,7 +165,7 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
             // other: the first arrives with the panel, the last leaves with it.
             const enter =
               i === 0
-                ? Math.max(clamp(lp / 0.13), clamp((approach - 0.45) / 0.3))
+                ? Math.max(clamp(lp / 0.13), clamp((approach - 0.34) / 0.22))
                 : clamp(lp / 0.13);
             // The last beat never fades: it has to still be there as the panel
             // releases and the page carries on to Ask Amol.
@@ -163,7 +174,7 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
               i === 0
                 ? Math.max(
                     clamp((lp - 0.06) / 0.13),
-                    clamp((approach - 0.55) / 0.3),
+                    clamp((approach - 0.42) / 0.22),
                   )
                 : clamp((lp - 0.06) / 0.13);
             const el = scale.beats[i];
