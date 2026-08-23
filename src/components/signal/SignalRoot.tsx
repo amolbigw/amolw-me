@@ -139,16 +139,33 @@ export function SignalRoot({ children }: { children: React.ReactNode }) {
 
           const n = scale.beats.length;
           const bp = p * n;
+          // How far the panel has risen into view, 0 → 1, finishing exactly as
+          // it sticks. The first beat resolves over this instead of over its
+          // own scroll window: progress is pinned at 0 until the panel is
+          // stuck, so without it a whole viewport rises through the screen
+          // with nothing in it — a hole between NOW and the first figure.
+          const approach = clamp((sy - (scale.top - vh)) / vh);
           for (let i = 0; i < n; i++) {
             const lp = bp - i;
             // Enter and exit windows do not overlap between neighbours, so two
             // figures are never on screen together. The gap between them reads
             // as a cut, which is the intent.
-            const enter = clamp(lp / 0.13);
+            // First and last beats are the boundary cases and mirror each
+            // other: the first arrives with the panel, the last leaves with it.
+            const enter =
+              i === 0
+                ? Math.max(clamp(lp / 0.13), clamp((approach - 0.45) / 0.3))
+                : clamp(lp / 0.13);
             // The last beat never fades: it has to still be there as the panel
             // releases and the page carries on to Ask Amol.
             const exit = i === n - 1 ? 1 : clamp((1 - lp) / 0.13);
-            const wordEnter = clamp((lp - 0.06) / 0.13);
+            const wordEnter =
+              i === 0
+                ? Math.max(
+                    clamp((lp - 0.06) / 0.13),
+                    clamp((approach - 0.55) / 0.3),
+                  )
+                : clamp((lp - 0.06) / 0.13);
             const el = scale.beats[i];
             el.style.setProperty("--o", Math.min(enter, exit).toFixed(3));
             el.style.setProperty("--wo", Math.min(wordEnter, exit).toFixed(3));

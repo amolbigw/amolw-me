@@ -438,7 +438,7 @@ body {
    the rail leaves it still drawing. */
 .signal-row:last-child {
   padding-bottom: 0;
-  min-height: 16svh;
+  min-height: 11svh;
 }
 
 /* --- Scale sequence ------------------------------------------------------ */
@@ -467,12 +467,15 @@ body {
   container-type: inline-size;
 }
 
+/* Runs almost the full height of the panel. At 22svh down it read as a second,
+   separate line starting below the trajectory's; brought up to 8svh it picks
+   up where the trajectory's left off and the through-line survives the join. */
 .signal-scale-rail {
   position: absolute;
   left: 1.5rem;
-  top: 22svh;
+  top: 8svh;
   /* --rail-h is read back by the head's transform, so the two must match. */
-  --rail-h: 56svh;
+  --rail-h: 78svh;
   height: var(--rail-h);
   width: 8px;
 }
