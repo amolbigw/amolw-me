@@ -26,9 +26,10 @@ export type SectionIcon =
   | "calendar";
 
 /**
- * Drawn on a 16px grid, rendered at 14px. Stroke-only and inheriting
- * currentColor so each icon picks up the label's muted tone, and so the accent
- * stays reserved for the index.
+ * Drawn on a 16px grid, rendered at 14px. Stroke-only and painted with the
+ * accent, so the icon pairs with the index and the two blue marks bracket the
+ * rule. Decorative, so the 6.7:1 it carries on --background is well past the
+ * 3:1 floor for a non-text graphic.
  */
 const PATHS: Record<SectionIcon, React.ReactNode> = {
   person: (
@@ -113,7 +114,7 @@ export function SectionLabel({
           aria-hidden="true"
           focusable="false"
           viewBox="0 0 16 16"
-          className="h-3.5 w-3.5 flex-none"
+          className="h-3.5 w-3.5 flex-none text-[var(--accent)]"
           fill="none"
           stroke="currentColor"
           strokeWidth="1.5"
