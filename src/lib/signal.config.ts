@@ -14,13 +14,24 @@
  * TO CONFIRM BEFORE LAUNCH: the exact ordering of the patents relative to the
  * headcount milestone, and whether "100-person" is current or a peak figure.
  *
- * ARTIFACT PROVENANCE — these are public files on a public site, so nothing
- * that identifies a client can go in one. The platform screenshot was
- * anonymised before it was committed: client name, URL, campaign titles and ad
- * creative replaced, and every spend, delivery and attribution figure masked.
- * The figures are masked rather than replaced with plausible ones on purpose —
- * invented numbers on a public page read as a performance claim. Re-anonymise
- * the same way if that screenshot is ever refreshed. The patent drawings are
+ * ARTIFACT PROVENANCE — these are public files on a public site, served at
+ * full resolution and indexed.
+ *
+ * The platform screenshot shows a real account. Its spend, delivery and
+ * attribution figures are that client's actual numbers, published with their
+ * permission — Amol confirmed clearance before this went up. Only the account
+ * name, URL and the two campaign titles are replaced, so the page reads as a
+ * product shot rather than a named case study. The ad creative is as captured
+ * and carries the client's own branding, which means the file identifies them
+ * at full resolution even though the header does not; that was a deliberate
+ * call, not an oversight.
+ *
+ * A REFRESH DOES NOT INHERIT THAT CLEARANCE. A new capture, or the same view
+ * for a different client, needs its own permission before it can ship. With no
+ * clearance, run the script at --scope full, which also blurs the creative and
+ * masks every figure:
+ *
+ *   cd public/trajectory && python3 ../../scripts/anonymise-platform-screenshot.py --scope full The patent drawings are
  * The patent artifacts are the real figures redrawn as schematics in the
  * signal blue, not reproductions of the scans: at the size these render, a
  * scan's type smears and the boxes grey out, and black-on-white line art reads
@@ -108,9 +119,10 @@ export const milestones: Milestone[] = [
     note: "Co-founded. Identity, attribution, and media in one platform.",
     artifacts: [
       {
-        /* Anonymised before publication — see the artifact note above. */
+        /* Real client figures, published with permission; account name
+           replaced. See the artifact note above before refreshing this. */
         src: "/trajectory/ftplatform.jpg",
-        alt: "The fullthrottle.ai platform showing two campaigns with delivery pacing, audience tactics, and sales and service attribution. Client details and performance figures are redacted.",
+        alt: "The fullthrottle.ai platform showing two campaigns with delivery pacing against budget, first-party audience counts, channel tactics, and attributed sales and service outcomes.",
         caption: "The platform",
         width: 1400,
         height: 796,
