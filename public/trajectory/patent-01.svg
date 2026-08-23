@@ -1,24 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img">
-  <rect width="800" height="1000" fill="#101013"/>
-  <rect x="0.5" y="0.5" width="799" height="999" fill="none" stroke="#4a4a52"/>
-  <text x="60" y="86" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="26" letter-spacing="3">FIG. 1</text>
-  <rect x="150" y="190" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="364" y="210" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">10</text>
-  <rect x="450" y="190" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="664" y="210" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">12</text>
-  <rect x="300" y="400" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="514" y="420" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">14</text>
-  <rect x="150" y="620" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="364" y="640" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">16</text>
-  <rect x="450" y="620" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="664" y="640" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">18</text>
-  <rect x="300" y="820" width="200" height="90" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="514" y="840" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">20</text>
-  <path d="M250 300 L400 400" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <path d="M550 300 L400 400" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <path d="M400 510 L250 620" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <path d="M400 510 L550 620" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <path d="M250 730 L400 820" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <path d="M550 730 L400 820" fill="none" stroke="#4a4a52" stroke-width="2"/>
-  <text x="400" y="978" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="17" letter-spacing="1.7391304347826086" text-anchor="middle">PLACEHOLDER · PATENT DRAWING 1</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" width="200" height="250" role="img">
+  <defs>
+    <marker id="ar" viewBox="0 0 8 8" refX="6.6" refY="4" markerWidth="4.4" markerHeight="4.4" orient="auto-start-reverse">
+      <path d="M0.6,0.8 L7,4 L0.6,7.2 z" fill="#009ef0"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#009ef0" stroke-linecap="round" stroke-linejoin="round">
+    <!-- network cloud, outside the system boundary -->
+    <path d="M26 34c-5 0-8-3-8-7s3-7 7-7c1-5 5-8 10-8s9 3 10 7c4 0 7 3 7 7s-3 8-8 8z" stroke-width="1.6"/>
+    <!-- system boundary -->
+    <rect x="22" y="62" width="156" height="168" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.75"/>
+    <!-- blocks -->
+    <g stroke-width="1.6" stroke-dasharray="3.2 2.4">
+      <rect x="30" y="132" width="42" height="32"/>
+      <rect x="86" y="134" width="36" height="28"/>
+      <rect x="76" y="80" width="32" height="32"/>
+      <rect x="118" y="80" width="32" height="32"/>
+      <rect x="138" y="132" width="34" height="32"/>
+      <rect x="76" y="186" width="34" height="32"/>
+      <rect x="120" y="186" width="34" height="32"/>
+    </g>
+    <!-- connectors -->
+    <g stroke-width="1.4">
+      <path d="M42 42 V132" marker-end="url(#ar)"/>
+      <path d="M72 148 H86" marker-end="url(#ar)"/>
+      <path d="M122 148 H138" marker-end="url(#ar)"/>
+      <path d="M104 134 V122 H92 V112" marker-end="url(#ar)"/>
+      <path d="M104 134 V122 H134 V112" marker-end="url(#ar)"/>
+      <path d="M104 162 V174 H93 V186" marker-end="url(#ar)"/>
+      <path d="M104 162 V174 H137 V186" marker-end="url(#ar)"/>
+    </g>
+    <!-- label rules: the figure's text, at a size where type would only smear -->
+    <g stroke-width="1.1" opacity="0.5">
+      <path d="M36 143h30M36 150h22M36 157h26"/>
+      <path d="M92 145h24M92 152h16"/>
+      <path d="M82 92h20M82 99h13"/>
+      <path d="M124 92h20M124 99h13"/>
+      <path d="M144 144h22M144 151h14"/>
+      <path d="M82 198h22M82 205h14"/>
+      <path d="M126 198h22M126 205h14"/>
+    </g>
+    <!-- reference-numeral leaders -->
+    <g stroke-width="1" opacity="0.6">
+      <path d="M62 20c6-3 9-1 11 3"/>
+      <path d="M178 62c5-4 8-3 11 1"/>
+      <path d="M22 116c-5-3-7-6-5-10"/>
+    </g>
+  </g>
 </svg>

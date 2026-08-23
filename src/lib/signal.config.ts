@@ -21,11 +21,29 @@
  * The figures are masked rather than replaced with plausible ones on purpose —
  * invented numbers on a public page read as a performance claim. Re-anonymise
  * the same way if that screenshot is ever refreshed. The patent drawings are
- * still labelled placeholders.
+ * The patent artifacts are the real figures redrawn as schematics in the
+ * signal blue, not reproductions of the scans: at the size these render, a
+ * scan's type smears and the boxes grey out, and black-on-white line art reads
+ * as a photocopy dropped on the page. Geometry, dotted rules and leader lines
+ * are faithful to the source figures; the body text is stood in for by rules,
+ * since type would only smear. All three patents share one 16-figure family,
+ * so each figure genuinely appears in the patent it is captioned with.
+ *
+ * PATENT COPY — captions carry the number and issue date and nothing else, and
+ * the milestone note stays at the approved "helps protect the core
+ * methodologies" level. Never state that a product or the platform is
+ * patented, and never characterise what a patent covers.
  */
 
 export type SignalArtifact = {
   src: string;
+  /**
+   * Optional source the artifact links to. Only set it where a reader would
+   * reasonably want to check the claim — the patents link to their
+   * announcements. Each one adds a tab stop inside the trajectory, so it is
+   * not free.
+   */
+  href?: string;
   /** Real alt text. Read by screen readers and by search. Not decorative. */
   alt: string;
   caption: string;
@@ -103,28 +121,31 @@ export const milestones: Milestone[] = [
     id: "patents",
     label: "Three patents",
     meta: "Issued",
-    note: "Protecting the core methodologies the platform runs on.",
+    note: "Three issued patents help protect the core methodologies the platform is built on.",
     artifacts: [
       {
         src: "/trajectory/patent-01.svg",
-        alt: "Placeholder for the first issued patent drawing",
-        caption: "PLACEHOLDER · figure 1",
-        width: 800,
-        height: 1000,
+        href: "https://www.globenewswire.com/news-release/2023/01/23/2593371/0/en/fullthrottle-technologies-llc-announces-issuance-of-patent-for-company-s-proprietary-first-party-data-technologies.html",
+        alt: "Figure 1 of US patent 11,556,947, redrawn as a schematic: a system diagram: a network, a processor and its peripherals inside a system boundary.",
+        caption: "US 11,556,947",
+        width: 200,
+        height: 250,
       },
       {
         src: "/trajectory/patent-02.svg",
-        alt: "Placeholder for the second issued patent drawing",
-        caption: "PLACEHOLDER · figure 2",
-        width: 800,
-        height: 1000,
+        href: "https://www.globenewswire.com/news-release/2024/02/20/2832133/0/en/fullthrottle-ai-secures-second-patent-to-power-unrivaled-attribution-insights-for-audio-and-video-advertising.html",
+        alt: "Figure 14 of US patent 11,823,219, redrawn as a schematic: a branching decision flow with two decision points and a loop back to the start.",
+        caption: "US 11,823,219",
+        width: 200,
+        height: 250,
       },
       {
         src: "/trajectory/patent-03.svg",
-        alt: "Placeholder for the third issued patent drawing",
-        caption: "PLACEHOLDER · figure 3",
-        width: 800,
-        height: 1000,
+        href: "https://www.globenewswire.com/news-release/2024/10/07/2959012/0/en/fullthrottle-ai-%EF%B8%8F-Secures-Patent-for-SafeMatch-%EF%B8%8F-Privacy-First-Attribution-Connecting-Ad-Exposures-to-Outcomes.html",
+        alt: "Figure 9 of US patent 12,051,083, redrawn as a schematic: a linear process chain running from start to end through five steps.",
+        caption: "US 12,051,083",
+        width: 200,
+        height: 250,
       },
     ],
   },

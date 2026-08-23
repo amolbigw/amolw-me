@@ -52,17 +52,12 @@ export function Trajectory() {
 
             {m.artifacts && (
               <div className="signal-artifacts">
-                {m.artifacts.map((a, i) => (
-                  <figure
-                    key={a.src}
-                    className="signal-artifact"
-                    style={{ "--i": i } as React.CSSProperties}
-                  >
-                    {/* Plain <img>: the manifest holds intrinsic dimensions, so
-                        the box is reserved before the file lands and CLS stays
-                        at zero. Worth revisiting as next/image once the real
-                        raster assets replace these placeholders. */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                {m.artifacts.map((a, i) => {
+                  {/* Plain <img>: the manifest holds intrinsic dimensions, so
+                      the box is reserved before the file lands and CLS stays at
+                      zero. */}
+                  const img = (
+                    /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={a.src}
                       alt={a.alt}
@@ -71,9 +66,39 @@ export function Trajectory() {
                       loading="lazy"
                       decoding="async"
                     />
-                    <figcaption>{a.caption}</figcaption>
-                  </figure>
-                ))}
+                  );
+                  return (
+                    <figure
+                      key={a.src}
+                      className="signal-artifact"
+                      style={{ "--i": i } as React.CSSProperties}
+                    >
+                      {a.href ? (
+                        <a
+                          href={a.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          /* The caption goes in the link text rather than the
+                             image alt, so the accessible name reads as the
+                             destination ("US 11,556,947, announcement") instead
+                             of a description of the drawing. */
+                          className="signal-artifact-link"
+                        >
+                          {img}
+                          <figcaption>
+                            {a.caption}
+                            <span className="sr-only"> — announcement</span>
+                          </figcaption>
+                        </a>
+                      ) : (
+                        <>
+                          {img}
+                          <figcaption>{a.caption}</figcaption>
+                        </>
+                      )}
+                    </figure>
+                  );
+                })}
               </div>
             )}
           </li>
