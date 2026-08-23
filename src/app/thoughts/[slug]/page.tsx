@@ -100,7 +100,7 @@ export default async function ThoughtPage(
       <div className="pt-16 pb-8">
         <Link
           href="/thoughts"
-          className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+          className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
         >
           ← All thoughts
         </Link>
@@ -115,7 +115,7 @@ export default async function ThoughtPage(
           href={t.linkedinUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+          className="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
         >
           Originally published on LinkedIn
           <span aria-hidden>↗</span>
@@ -169,7 +169,7 @@ export default async function ThoughtPage(
           rel="noopener noreferrer"
           className="group block"
         >
-          <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+          <div className="text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
             Read & discuss on LinkedIn
           </div>
           <div className="mt-2 text-base text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">

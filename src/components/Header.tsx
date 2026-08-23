@@ -43,13 +43,13 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:py-5">
         <Link
           href="/"
-          className="font-mono text-sm tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
+          className="text-sm tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors"
           aria-current={pathname === "/" ? "page" : undefined}
         >
           <span className="text-[var(--accent)]">/</span>amolw
         </Link>
 
-        <nav className="hidden sm:flex items-center gap-6 font-mono text-xs uppercase tracking-widest">
+        <nav className="hidden sm:flex items-center gap-6 text-xs uppercase tracking-widest">
           {nav.map((item) => {
             const active = isActive(item.href);
             return (
@@ -97,7 +97,7 @@ export function Header() {
         hidden={!open}
         className="sm:hidden border-t border-[var(--border)] bg-[var(--background)]"
       >
-        <nav className="mx-auto flex max-w-6xl flex-col px-6 py-2 font-mono text-sm uppercase tracking-widest">
+        <nav className="mx-auto flex max-w-6xl flex-col px-6 py-2 text-sm uppercase tracking-widest">
           {nav.map((item) => {
             const active = isActive(item.href);
             return (

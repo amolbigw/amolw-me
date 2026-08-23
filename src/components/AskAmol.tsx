@@ -148,7 +148,7 @@ export function AskAmol() {
   return (
     <div className="border border-[var(--border-strong)]">
       <div className="border-b border-[var(--border)] px-6 py-4 sm:px-8">
-        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+        <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
           <span className="text-[var(--accent)]">●</span>
           <span>Ask Amol</span>
         </div>
@@ -178,7 +178,7 @@ export function AskAmol() {
             {turns.map((t, i) =>
               t.role === "user" ? (
                 <div key={i}>
-                  <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+                  <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                     You asked
                   </div>
                   <p className="mt-2 text-base leading-relaxed text-[var(--foreground)]">
@@ -187,7 +187,7 @@ export function AskAmol() {
                 </div>
               ) : (
                 <div key={i} ref={i === turns.length - 1 ? liveRef : undefined}>
-                  <div className="font-mono text-xs uppercase tracking-widest text-[var(--accent)]">
+                  <div className="text-xs uppercase tracking-widest text-[var(--accent)]">
                     From the writing
                   </div>
                   <div className="mt-2" aria-live="polite" aria-busy={streaming}>
@@ -261,7 +261,7 @@ export function AskAmol() {
             <button
               type="submit"
               disabled={busy || !input.trim()}
-              className="inline-flex min-h-11 items-center justify-center border border-[var(--border-strong)] px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-50"
+              className="inline-flex min-h-11 items-center justify-center border border-[var(--border-strong)] px-5 py-2 text-xs uppercase tracking-widest transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-50"
             >
               {busy ? "Reading…" : "Ask"}
             </button>
@@ -270,7 +270,7 @@ export function AskAmol() {
       </div>
 
       <div className="border-t border-[var(--border)] px-6 py-4 sm:px-8">
-        <p className="font-mono text-xs leading-relaxed text-[var(--muted)]">
+        <p className="text-xs leading-relaxed text-[var(--muted)]">
           AI-generated from Amol&apos;s published writing. For anything official,{" "}
           <a
             href={`mailto:${site.email}`}

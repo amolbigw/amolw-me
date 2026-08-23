@@ -30,7 +30,7 @@ export function PressRow({ item }: { item: PressItem }) {
             />
           </div>
         ) : (
-          <div className="flex h-14 w-20 flex-shrink-0 items-center justify-center font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">
+          <div className="flex h-14 w-20 flex-shrink-0 items-center justify-center text-[10px] uppercase tracking-widest text-[var(--muted)]">
             {item.publication}
           </div>
         )}
@@ -38,7 +38,7 @@ export function PressRow({ item }: { item: PressItem }) {
           <div className="text-base leading-snug text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
             {item.title}
           </div>
-          <div className="mt-2 flex items-center gap-2 font-mono text-xs text-[var(--muted)]">
+          <div className="mt-2 flex items-center gap-2 text-xs text-[var(--muted)]">
             <span>{dateLabel}</span>
             <span
               aria-hidden
@@ -70,7 +70,7 @@ export function PressRow({ item }: { item: PressItem }) {
               />
             </div>
           ) : (
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
               {item.publication}
             </div>
           )}
@@ -78,7 +78,7 @@ export function PressRow({ item }: { item: PressItem }) {
         <div className="sm:col-span-7 md:col-span-8 text-base sm:text-[17px] leading-snug text-[var(--foreground)] group-hover:text-[var(--accent)] transition-colors">
           {item.title}
         </div>
-        <div className="sm:col-span-2 md:col-span-2 text-right font-mono text-xs text-[var(--muted)]">
+        <div className="sm:col-span-2 md:col-span-2 text-right text-xs tabular-nums text-[var(--muted)]">
           {dateLabel}
           <span className="ml-2 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
             ↗

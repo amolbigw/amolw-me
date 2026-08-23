@@ -55,11 +55,11 @@ export default function NewsPage() {
       {years.map((year) => (
         <section key={year} className="pb-20">
           <div className="mb-6 flex items-baseline gap-4">
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
               {year}
             </div>
             <div className="h-px flex-1 bg-[var(--border)]" />
-            <div className="font-mono text-xs text-[var(--muted)]">
+            <div className="text-xs text-[var(--muted)]">
               {byYear[year].length.toString().padStart(2, "0")}
             </div>
           </div>

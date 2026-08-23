@@ -41,7 +41,7 @@ export default function Home() {
         />
         <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-28 sm:pb-40">
           <div className="reveal">
-          <div className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
+          <div className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <span className="text-[var(--accent)]">●</span>
             <span className="ml-3">Co-founder · Running fullthrottle.ai</span>
           </div>
@@ -67,7 +67,7 @@ export default function Home() {
             cookie, is the unit of attention.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-3 font-mono text-xs uppercase tracking-widest">
+          <div className="mt-10 flex flex-wrap gap-3 text-xs uppercase tracking-widest">
             <Link
               href="/about"
               className="inline-flex min-h-11 items-center border border-[var(--border-strong)] bg-[var(--background)]/70 px-4 py-2 hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
@@ -106,7 +106,7 @@ export default function Home() {
           <SectionLabel index="02">Selected press</SectionLabel>
           <Link
             href="/news"
-            className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+            className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
           >
             All →
           </Link>
@@ -124,7 +124,7 @@ export default function Home() {
           <SectionLabel index="03">Recent writing</SectionLabel>
           <Link
             href="/thoughts"
-            className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
+            className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
           >
             All →
           </Link>
@@ -136,7 +136,7 @@ export default function Home() {
               href={`/thoughts/${t.slug}`}
               className="group bg-[var(--background)] p-6 flex flex-col gap-4 hover:bg-white/[0.02] transition-colors"
             >
-              <div className="font-mono text-xs text-[var(--muted)]">
+              <div className="text-xs text-[var(--muted)]">
                 {new Date(t.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "short",
@@ -149,7 +149,7 @@ export default function Home() {
               <p className="text-sm leading-relaxed text-[var(--muted)] line-clamp-3">
                 {t.excerpt}
               </p>
-              <div className="mt-auto pt-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
+              <div className="mt-auto pt-2 text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors">
                 Read →
               </div>
             </Link>
@@ -162,7 +162,7 @@ export default function Home() {
         <SectionLabel index="04">Currently</SectionLabel>
         <div className="mt-10 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <div className="bg-[var(--background)] p-8">
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
               Running
             </div>
             <p className="text-base leading-relaxed">
@@ -179,7 +179,7 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-[var(--background)] p-8">
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
               Building
             </div>
             <p className="text-base leading-relaxed">
@@ -188,7 +188,7 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-[var(--background)] p-8">
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] mb-3">
               Open to
             </div>
             <p className="text-base leading-relaxed">

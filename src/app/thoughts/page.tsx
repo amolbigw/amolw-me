@@ -69,7 +69,7 @@ export default function ThoughtsPage() {
               className="group block border-b border-[var(--border)] py-8 transition-colors hover:bg-white/[0.02]"
             >
               <div className="grid grid-cols-12 gap-x-6 gap-y-2 items-start">
-                <div className="col-span-12 sm:col-span-2 font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1 flex items-center gap-2">
+                <div className="col-span-12 sm:col-span-2 text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1 flex items-center gap-2">
                   <span>
                     {new Date(t.date).toLocaleDateString("en-US", {
                       year: "numeric",
@@ -100,7 +100,7 @@ export default function ThoughtsPage() {
                     </div>
                   ) : null}
                 </div>
-                <div className="hidden sm:block sm:col-span-1 sm:text-right font-mono text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1">
+                <div className="hidden sm:block sm:col-span-1 sm:text-right text-xs text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors sm:pt-1">
                   ↗
                 </div>
               </div>

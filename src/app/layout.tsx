@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -12,11 +12,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -96,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <JsonLd data={personSchema} />
@@ -108,11 +103,11 @@ export default function RootLayout({
 
         <footer className="border-t border-[var(--border)] mt-32">
           <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="font-mono text-xs text-[var(--muted)]">
+            <div className="text-xs text-[var(--muted)]">
               © {new Date().getFullYear()} Amol Waishampayan ·
               <span className="text-[var(--foreground)]"> built from scratch</span>
             </div>
-            <div className="flex gap-6 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+            <div className="flex gap-6 text-xs uppercase tracking-widest text-[var(--muted)]">
               <a
                 href={site.linkedin}
                 target="_blank"

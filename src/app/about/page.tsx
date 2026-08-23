@@ -90,7 +90,7 @@ export default function AboutPage() {
           <aside className="border-t border-[var(--border)] pt-6 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:flex sm:flex-col sm:gap-0 sm:space-y-6">
             {facts.map((f) => (
               <div key={f.label}>
-                <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+                <div className="text-xs uppercase tracking-widest text-[var(--muted)]">
                   {f.label}
                 </div>
                 <div className="mt-1 text-base text-[var(--foreground)]">
@@ -110,7 +110,7 @@ export default function AboutPage() {
               key={t.period + t.org}
               className="grid grid-cols-12 gap-6 border-b border-[var(--border)] py-8"
             >
-              <div className="col-span-12 sm:col-span-3 font-mono text-xs uppercase tracking-widest text-[var(--muted)]">
+              <div className="col-span-12 sm:col-span-3 text-xs uppercase tracking-widest tabular-nums text-[var(--muted)]">
                 {t.period}
               </div>
               <div className="col-span-12 sm:col-span-9">
@@ -134,7 +134,7 @@ export default function AboutPage() {
             href="mailto:amolbigw@gmail.com"
             className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               Email
             </div>
             <div className="mt-2 text-base break-all">amolbigw@gmail.com</div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               LinkedIn
             </div>
             <div className="mt-2 text-base">/in/amolw</div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="bg-[var(--background)] p-6 hover:bg-white/[0.02] transition-colors group flex flex-col"
           >
-            <div className="font-mono text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
+            <div className="text-xs uppercase tracking-widest text-[var(--muted)] group-hover:text-[var(--accent)]">
               Instagram
             </div>
             <div className="mt-2 text-base">@amolw</div>
