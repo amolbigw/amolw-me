@@ -2,8 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { site } from "@/lib/site";
+
 const MAX_CHARS = 1000;
 const MAX_USER_TURNS = 8;
+/** Only used if a 429 somehow arrives without the server's own figure. */
+const MAX_PER_HOUR_FALLBACK = 10;
 
 const SUGGESTED = [
   "What's your take on the post-cookie web?",
@@ -64,10 +68,18 @@ export function AskAmol() {
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /**
+   * Hitting the hourly cap is a conversion point, not a failure: the reader is
+   * clearly engaged. It gets its own state so the answer can be an invitation
+   * to email rather than a red error line, and so the input can step aside
+   * instead of inviting a request that is guaranteed to 429.
+   */
+  const [limitedAt, setLimitedAt] = useState<number | null>(null);
   const liveRef = useRef<HTMLDivElement | null>(null);
 
   const userTurns = turns.filter((t) => t.role === "user").length;
   const atTurnCap = userTurns >= MAX_USER_TURNS;
+  const rateLimited = limitedAt !== null;
   const busy = streaming;
 
   // Keep the newest answer in view as it streams, without yanking the whole page.
@@ -79,7 +91,7 @@ export function AskAmol() {
 
   async function send(question: string) {
     const trimmed = question.trim();
-    if (!trimmed || busy || atTurnCap) return;
+    if (!trimmed || busy || atTurnCap || rateLimited) return;
 
     setError(null);
     setInput("");
@@ -98,6 +110,11 @@ export function AskAmol() {
       if (!res.ok || !res.body) {
         const payload = await res.json().catch(() => null);
         setTurns(next);
+        if (payload?.code === "rate_limited") {
+          // The server owns the number, so the copy cannot drift from it.
+          setLimitedAt(typeof payload.limit === "number" ? payload.limit : MAX_PER_HOUR_FALLBACK);
+          return;
+        }
         setError(
           payload?.error ??
             "Something went wrong reaching the model. Try again in a moment.",
@@ -195,16 +212,30 @@ export function AskAmol() {
           </p>
         )}
 
-        {atTurnCap ? (
-          <p className="mt-6 text-base leading-relaxed text-[var(--muted)]">
-            That&apos;s as far as one conversation goes. Reload to start fresh, or{" "}
+        {rateLimited ? (
+          <p className="mt-6 border-l-2 border-[var(--accent)] pl-4 text-base leading-relaxed text-[var(--muted)]">
+            That&apos;s {limitedAt} questions in an hour, which is the limit. If
+            you want to keep going, the better next step is a real conversation:
+            email{" "}
             <a
-              href="mailto:amolbigw@gmail.com"
+              href={`mailto:${site.email}`}
               className="text-[var(--accent)] underline-offset-4 hover:underline"
             >
-              email Amol
+              {site.email}
+            </a>
+            .
+          </p>
+        ) : atTurnCap ? (
+          <p className="mt-6 text-base leading-relaxed text-[var(--muted)]">
+            That&apos;s as far as one conversation goes. Reload to start fresh,
+            or email{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="text-[var(--accent)] underline-offset-4 hover:underline"
+            >
+              {site.email}
             </a>{" "}
-            to go deeper.
+            to pick it up properly.
           </p>
         ) : (
           <form
@@ -242,7 +273,7 @@ export function AskAmol() {
         <p className="font-mono text-xs leading-relaxed text-[var(--muted)]">
           AI-generated from Amol&apos;s published writing. For anything official,{" "}
           <a
-            href="mailto:amolbigw@gmail.com"
+            href={`mailto:${site.email}`}
             className="text-[var(--accent)] underline-offset-4 hover:underline"
           >
             email him

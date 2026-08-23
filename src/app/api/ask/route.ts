@@ -2,7 +2,8 @@ import OpenAI from "openai";
 
 import { SYSTEM_PROMPT } from "@/lib/ask-prompt";
 import { CORPUS_TOKENS_APPROX, PROMPT_CACHE_KEY, corpusStats } from "@/lib/corpus";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { checkRateLimit, rateLimitConfig } from "@/lib/rate-limit";
+import { site } from "@/lib/site";
 
 /** node:crypto in the corpus module, and streaming needs a real Node runtime. */
 export const runtime = "nodejs";
@@ -20,6 +21,9 @@ export const dynamic = "force-dynamic";
  * refusal behavior is verified in production.
  */
 const MODEL = "gpt-5.6-terra";
+
+/** Where a capped-out reader is sent to continue as a human conversation. */
+const SITE_EMAIL = site.email;
 
 const MAX_OUTPUT_TOKENS = 1024;
 const MAX_MESSAGE_CHARS = 1000;
@@ -84,10 +88,19 @@ export async function POST(request: Request) {
       console.error("[ask] rate limiter unconfigured in production; refusing");
       return bad(503, "Ask Amol is not configured right now.");
     }
+    // `code` and `limit` let the widget render this as its own state with a
+    // live mailto link, rather than dropping the string into the generic error
+    // line where an address would be dead text the reader has to retype.
+    // `limit` travels with the response so the copy cannot drift from the
+    // number actually enforced.
     return bad(
       429,
-      "That's a lot of questions in one hour. Give it a little time, or email Amol directly.",
-      { retryAfterSeconds: gate.retryAfterSeconds },
+      `That's ${rateLimitConfig.limit} questions in an hour, which is the limit. Email ${SITE_EMAIL} to keep the conversation going.`,
+      {
+        code: "rate_limited",
+        limit: rateLimitConfig.limit,
+        retryAfterSeconds: gate.retryAfterSeconds,
+      },
     );
   }
 
