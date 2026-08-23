@@ -491,9 +491,14 @@ body {
      between NOW and 03. Sitting the block above centre closes that, and it is
      the better position on a phone anyway: the browser's URL bar overlays the
      bottom of the viewport, so optical centre is above geometric centre. */
-  .signal-beat {
+  .signal-beat:not([data-statement]) {
     padding-bottom: 18svh;
   }
+
+  /* Deliberately not lifted. Nothing waits behind the closing statement, so
+     sitting it high buys no approach and every pixel above it becomes empty
+     panel to scroll past on the way to Ask Amol. */
+
 }
 
 /* --- Scale sequence ------------------------------------------------------ */
@@ -656,6 +661,17 @@ body {
   height: 20svh;
   min-height: 8rem;
   margin-bottom: 1.25rem;
+}
+
+/* Kept next to the rule it overrides rather than in the shared narrow-screen
+   block further up: both selectors are (0,1,0), so from up there the later
+   rule silently won the tie. */
+@media (max-width: 639px) {
+  .signal-terminus {
+    height: 8svh;
+    min-height: 4rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
 .signal-node-end {

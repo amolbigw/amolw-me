@@ -234,8 +234,12 @@ export const pacing = {
   /**
    * Extra distance after the final beat, so STILL BUILDING. holds on screen
    * before the panel releases instead of snapping away.
+   *
+   * It does not need to carry the whole hold: once the panel releases, the
+   * statement stays on screen while the rest of the panel scrolls past, which
+   * is most of a viewport of dwell on its own.
    */
-  tailRatio: 0.42,
+  tailRatio: 0.32,
   /**
    * Where down the viewport the signal's drawing head sits. 0.68 puts it just
    * below centre, so the line arrives at a milestone slightly before the
