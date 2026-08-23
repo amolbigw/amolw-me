@@ -53,7 +53,15 @@ export default function Home() {
           </h1>
 
           <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-relaxed text-[var(--muted)]">
-            I run <span className="text-[var(--foreground)]">fullthrottle.ai</span>{" "}
+            I run{" "}
+            <a
+              href="https://www.fullthrottle.ai/who-we-are/team/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--foreground)] underline decoration-[var(--border-strong)] underline-offset-4 transition-colors hover:text-[var(--accent)] hover:decoration-[var(--accent)]"
+            >
+              fullthrottle.ai
+            </a>{" "}
             day to day:{" "}
             <span className="text-[var(--foreground)]">
               revenue, sales, and customer success
@@ -62,9 +70,10 @@ export default function Home() {
             <span className="text-[var(--foreground)]">
               product, engineering, and operations
             </span>{" "}
-            on the other, board meetings in between. Three patents, one exit,
-            and roughly a decade convincing brands that the household, not the
-            cookie, is the unit of attention.
+            on the other, board meetings in between. Three patents, one exit, a
+            100-person company, and roughly a decade spent seeing around
+            corners, challenging conventional wisdom, rallying people around a
+            different vision, and building until the market caught up.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3 text-xs uppercase tracking-widest">
