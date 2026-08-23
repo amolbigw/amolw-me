@@ -6,6 +6,9 @@
  * label wording, artifact paths and alt text, and the scroll pacing of both
  * sequences. The components read from this file and hold no copy of their own.
  *
+ * Amol is the first-named inventor on all three patents (verified against the
+ * published documents), which is what "lead inventor" in the note rests on.
+ *
  * FACT PROVENANCE — every milestone below traces to something already
  * published on this site, so the interlude cannot drift from /about:
  *   - Maiden Media Group, Stream Companies, dates, roles  → src/lib/bio.ts
@@ -132,8 +135,9 @@ export const milestones: Milestone[] = [
   {
     id: "patents",
     label: "Three patents",
-    meta: "Issued",
-    note: "Three issued patents help protect the core methodologies the platform is built on.",
+    /* No meta line here: the note already carries both the count and the
+       status, and "Issued" above "3 issued patents" said it twice running. */
+    note: "3 issued patents as lead inventor, helping protect the core methodologies the platform is built on.",
     artifacts: [
       {
         src: "/trajectory/patent-01.svg",
