@@ -458,6 +458,13 @@ body {
   transition-delay: 0ms;
 }
 
+/* NOW is the last milestone and it does not resolve: no note, no end cap, and
+   the rail leaves it still drawing. */
+.signal-row:last-child {
+  padding-bottom: 0;
+  min-height: 11svh;
+}
+
 /* Phones are tall, so the same rhythm costs a lot more scrolling there. The
    milestones keep their spacing relative to the copy and give back the slack. */
 @media (max-width: 639px) {
@@ -473,13 +480,20 @@ body {
   .signal-row[data-artifacts] {
     min-height: 26svh;
   }
-}
 
-/* NOW is the last milestone and it does not resolve: no note, no end cap, and
-   the rail leaves it still drawing. */
-.signal-row:last-child {
-  padding-bottom: 0;
-  min-height: 11svh;
+  /* NOW only has to read as unresolved, not as a long pause. */
+  .signal-row:last-child {
+    min-height: 7svh;
+  }
+
+  /* A phone's panel is ~850px tall holding one ~125px figure, so dead-centring
+     it strands about 360px of empty rail above the number — most of the run
+     between NOW and 03. Sitting the block above centre closes that, and it is
+     the better position on a phone anyway: the browser's URL bar overlays the
+     bottom of the viewport, so optical centre is above geometric centre. */
+  .signal-beat {
+    padding-bottom: 18svh;
+  }
 }
 
 /* --- Scale sequence ------------------------------------------------------ */
@@ -625,6 +639,8 @@ body {
   position: static;
   min-height: 60svh;
   padding-left: var(--rail-col);
+  /* Stacked in flow, so there is no panel to sit high within. */
+  padding-bottom: 0;
 }
 
 /* --- Terminus: the line lands on 01 -------------------------------------- */
