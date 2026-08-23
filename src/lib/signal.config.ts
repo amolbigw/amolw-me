@@ -13,6 +13,15 @@
  *   - "roughly a decade"                                  → hero copy
  * TO CONFIRM BEFORE LAUNCH: the exact ordering of the patents relative to the
  * headcount milestone, and whether "100-person" is current or a peak figure.
+ *
+ * ARTIFACT PROVENANCE — these are public files on a public site, so nothing
+ * that identifies a client can go in one. The platform screenshot was
+ * anonymised before it was committed: client name, URL, campaign titles and ad
+ * creative replaced, and every spend, delivery and attribution figure masked.
+ * The figures are masked rather than replaced with plausible ones on purpose —
+ * invented numbers on a public page read as a performance claim. Re-anonymise
+ * the same way if that screenshot is ever refreshed. The patent drawings are
+ * still labelled placeholders.
  */
 
 export type SignalArtifact = {
@@ -60,11 +69,11 @@ export const milestones: Milestone[] = [
     note: "Acquired by Stream Companies.",
     artifacts: [
       {
-        src: "/trajectory/exit-press.svg",
-        alt: "Placeholder for press coverage of the Maiden Media Group acquisition",
-        caption: "PLACEHOLDER · press coverage",
-        width: 1200,
-        height: 675,
+        src: "/trajectory/maidenmedia.jpg",
+        alt: "The Maiden Media Group page, describing the agency as a strategic creative agency acquired by Stream Companies",
+        caption: "Acquired by Stream Companies",
+        width: 900,
+        height: 449,
       },
     ],
   },
@@ -81,11 +90,12 @@ export const milestones: Milestone[] = [
     note: "Co-founded. Identity, attribution, and media in one platform.",
     artifacts: [
       {
-        src: "/trajectory/product-ui.svg",
-        alt: "Placeholder for a fullthrottle.ai platform screenshot",
-        caption: "PLACEHOLDER · platform",
-        width: 1200,
-        height: 750,
+        /* Anonymised before publication — see the artifact note above. */
+        src: "/trajectory/ftplatform.jpg",
+        alt: "The fullthrottle.ai platform showing two campaigns with delivery pacing, audience tactics, and sales and service attribution. Client details and performance figures are redacted.",
+        caption: "The platform",
+        width: 1400,
+        height: 796,
       },
     ],
   },
