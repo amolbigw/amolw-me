@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img">
+  <rect width="1200" height="675" fill="#101013"/>
+  <rect x="0.5" y="0.5" width="1199" height="674" fill="none" stroke="#4a4a52"/>
+  <rect x="70" y="90" width="620" height="26" fill="#4a4a52"/>
+  <rect x="70" y="136" width="420" height="26" fill="#4a4a52"/>
+  <rect x="70" y="230" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="264" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="298" width="480" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="332" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="366" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="400" width="480" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="434" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="468" width="700" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="70" y="502" width="480" height="10" fill="#4a4a52" opacity="0.5"/>
+  <rect x="840" y="90" width="290" height="290" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M840 380 L985 200 L1130 380" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="600" y="653" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="26" letter-spacing="2.608695652173913" text-anchor="middle">PLACEHOLDER · PRESS CLIPPING</text>
+</svg>

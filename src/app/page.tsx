@@ -4,6 +4,11 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { PressRow } from "@/components/PressRow";
 import { VantaGlobe } from "@/components/VantaGlobe";
 import { AskAmol } from "@/components/AskAmol";
+import { SignalRoot } from "@/components/signal/SignalRoot";
+import { SignalOrigin } from "@/components/signal/SignalOrigin";
+import { SignalTerminus } from "@/components/signal/SignalTerminus";
+import { Trajectory } from "@/components/signal/Trajectory";
+import { ScaleSequence } from "@/components/signal/ScaleSequence";
 import { press } from "@/lib/press";
 import { thoughts } from "@/lib/thoughts";
 import { pageMeta } from "@/lib/seo";
@@ -42,7 +47,7 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-28 sm:pb-40">
           <div className="reveal">
           <div className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
-            <span className="text-[var(--accent)]">●</span>
+            <SignalOrigin />
             <span className="ml-3">Co-founder · Running fullthrottle.ai</span>
           </div>
 
@@ -100,9 +105,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Two unnumbered interludes. The signal born at the hero drives both,
+          then terminates on the 01 below. Server components inside a client
+          wrapper, so only the scroll clock ships as JavaScript. */}
+      <SignalRoot>
+      <Trajectory />
+      <ScaleSequence />
+
       <div className="mx-auto max-w-6xl px-6">
-      {/* Ask Amol */}
+      {/* Ask Amol — where the signal lands */}
       <section className="pb-32">
+        <SignalTerminus />
         <SectionLabel icon="chat" index="01">Ask Amol</SectionLabel>
         <div className="mt-10">
           <AskAmol />
@@ -214,6 +227,7 @@ export default function Home() {
         </div>
       </section>
       </div>
+      </SignalRoot>
     </>
   );
 }

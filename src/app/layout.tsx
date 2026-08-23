@@ -106,6 +106,8 @@ export default function RootLayout({
             <div className="text-xs text-[var(--muted)]">
               © {new Date().getFullYear()} Amol Waishampayan ·
               <span className="text-[var(--foreground)]"> built from scratch</span>
+              {/* The last node on the line. A period on the sentence. */}
+              <span className="signal-final-node" aria-hidden />
             </div>
             <div className="flex gap-6 text-xs uppercase tracking-widest text-[var(--muted)]">
               <a

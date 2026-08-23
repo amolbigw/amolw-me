@@ -112,3 +112,558 @@ body {
 .reveal {
   animation: reveal-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
+
+/* ===========================================================================
+   THE SIGNAL SYSTEM
+
+   One 1px line is born at the hero's status dot, runs down the left edge of the
+   content column through the Trajectory and the Scale sequence, and terminates
+   on the `01` of Ask Amol. Everything below is that line and the states it
+   drives. Markup: src/components/signal/*. Clock: SignalRoot.
+
+   Two rules hold the whole thing together:
+
+   1. The finished state is the default. Every rule here describes what a
+      milestone, beat or number looks like *after* the signal reaches it. The
+      pre-activation states live behind `[data-signal-motion="on"]`, which only
+      SignalRoot sets, and only when motion is allowed. So reduced-motion and
+      no-JavaScript both get the complete, legible, static version for free —
+      there is no separate fallback to keep in sync.
+
+   2. Only `opacity`, `transform` and `stroke-dashoffset` move. Nothing in this
+      block can trigger layout, which is what keeps the scroll at 60fps on a
+      mid-range phone.
+   =========================================================================== */
+
+:root {
+  /* One blue for the entire system.
+
+     Deliberately the same hue as --accent rather than the second, indigo-ward
+     blue: this site already carries --accent on links, section numbers, icons
+     and the hero dot, and a second saturated blue ~17° away from it would sit
+     directly under the `01` and read as a mismatch rather than as a system.
+     To take the distinct hue instead, change this one line to #3b82f6. */
+  --signal: #009ef0;
+  /* The inactive track, and the footer's final node. ~30% of the same hue. */
+  --signal-dim: rgba(0, 158, 240, 0.3);
+
+  /* Distance from the content column's left edge to the centre of the rail.
+     Also the optical centre of the hero's `●` and of the `0` in `01` at 12px
+     Inter, which is what lets one plumb line pass through all three. */
+  --rail-x: 4px;
+  /* Width of the rail gutter — the rail column plus the gap to the copy. */
+  --rail-col: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --rail-col: 2.5rem;
+  }
+}
+
+/* --- The rail itself ----------------------------------------------------- */
+
+.signal-seg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+  overflow: visible;
+}
+
+.signal-seg-track {
+  stroke: var(--signal-dim);
+  stroke-width: 1;
+}
+
+.signal-seg-trace {
+  stroke: var(--signal);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  /* --draw is written by SignalRoot, 0 → 1, as the row passes the drawing
+     head. Undrawn by default is invisible, which is why the dim track exists. */
+  stroke-dashoffset: calc(1 - var(--draw, 1));
+}
+
+/* Motion off: hold the static dim track and drop the moving trace entirely.
+   Covers reduced-motion and the no-JavaScript case in one rule. */
+.signal-root:not([data-signal-motion="on"]) .signal-seg-trace {
+  display: none;
+}
+
+/* --- Origin: the hero dot ------------------------------------------------ */
+
+.signal-origin {
+  position: relative;
+}
+
+.signal-origin-line {
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: visible;
+}
+
+.signal-origin-line line {
+  stroke: var(--signal);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: signal-draw 720ms cubic-bezier(0.2, 0.8, 0.2, 1) 260ms forwards;
+}
+
+@keyframes signal-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-origin-line line {
+    stroke: var(--signal-dim);
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* --- Trajectory ---------------------------------------------------------- */
+
+.signal-lead {
+  position: relative;
+  height: 18svh;
+  min-height: 7rem;
+}
+
+.signal-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.signal-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--rail-col) minmax(0, 1fr);
+  /* No top padding anywhere: the label sits at the row's top edge and all the
+     slack falls below it, so the line runs on through empty space to the next
+     milestone. That gap is the compounding. */
+  padding-bottom: 3.5rem;
+  min-height: 22svh;
+}
+
+.signal-row[data-artifacts] {
+  min-height: 38svh;
+}
+
+/* Out of the grid and pinned to the whole <li> box, padding included. As a
+   grid item it would only span the row's *content*, and the line would break
+   by exactly `padding-bottom` between every milestone. */
+.signal-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--rail-col);
+}
+
+.signal-body {
+  grid-column: 2;
+}
+
+.signal-node {
+  position: absolute;
+  /* Centred on --rail-x, aligned to the optical middle of the 12px label. */
+  top: 4.5px;
+  left: calc(var(--rail-x) - 3.5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+.signal-label {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.signal-meta {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.signal-note {
+  margin-top: 0.875rem;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Artifacts. Below the milestone on mobile, in the negative space beside the
+   rail on desktop. No modal, no lightbox, no click. */
+.signal-artifacts {
+  grid-column: 2;
+  display: grid;
+  /* One implicit column per artifact, all equal. The three patent drawings
+     land as a set at a third the width each. */
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  max-width: 34rem;
+}
+
+@media (min-width: 900px) {
+  .signal-row {
+    grid-template-columns: var(--rail-col) minmax(0, 24rem) minmax(0, 1fr);
+  }
+
+  .signal-artifacts {
+    grid-column: 3;
+    grid-row: 1;
+    margin-top: 0;
+    margin-left: 3rem;
+    max-width: 28rem;
+  }
+}
+
+.signal-artifact {
+  margin: 0;
+  min-width: 0;
+}
+
+.signal-artifact img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+
+.signal-artifact figcaption {
+  margin-top: 0.625rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Pre-activation states. Only ever applied when SignalRoot is running. */
+.signal-root[data-signal-motion="on"] .signal-node {
+  background: var(--signal-dim);
+  transition: background 200ms linear;
+}
+
+.signal-root[data-signal-motion="on"] .signal-row[data-on="0"] .signal-label,
+.signal-root[data-signal-motion="on"] .signal-row[data-on="0"] .signal-meta,
+.signal-root[data-signal-motion="on"] .signal-row[data-on="0"] .signal-note {
+  opacity: 0.28;
+}
+
+.signal-root[data-signal-motion="on"] .signal-label,
+.signal-root[data-signal-motion="on"] .signal-meta,
+.signal-root[data-signal-motion="on"] .signal-note {
+  transition: opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Reaching a milestone: the node fills and pulses once. One pulse, ~300ms, no
+   ripple loop. */
+.signal-root[data-signal-motion="on"] .signal-row[data-on="1"] .signal-node,
+.signal-root[data-signal-motion="on"] .signal-row[data-on="2"] .signal-node {
+  background: var(--signal);
+  animation: signal-pulse 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes signal-pulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(2.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.signal-root[data-signal-motion="on"] .signal-artifact {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* The three patent drawings land as a set, a beat apart. */
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.signal-root[data-signal-motion="on"] .signal-row[data-on="1"] .signal-artifact {
+  opacity: 1;
+  transform: none;
+}
+
+/* Passed. The row's foot has cleared the top of the viewport and its artifact
+   recedes rather than competing with whatever is arriving. */
+.signal-root[data-signal-motion="on"] .signal-row[data-on="2"] .signal-artifact {
+  opacity: 0.5;
+  transform: translateY(-6px);
+  transition-delay: 0ms;
+}
+
+/* Phones are tall, so the same rhythm costs a lot more scrolling there. The
+   milestones keep their spacing relative to the copy and give back the slack. */
+@media (max-width: 639px) {
+  .signal-lead {
+    height: 14svh;
+  }
+
+  .signal-row {
+    padding-bottom: 2.5rem;
+    min-height: 17svh;
+  }
+
+  .signal-row[data-artifacts] {
+    min-height: 26svh;
+  }
+}
+
+/* NOW is the last milestone and it does not resolve: no note, no end cap, and
+   the rail leaves it still drawing. */
+.signal-row:last-child {
+  padding-bottom: 0;
+  min-height: 16svh;
+}
+
+/* --- Scale sequence ------------------------------------------------------ */
+
+.signal-scale {
+  position: relative;
+  /* Panel, then one beat's worth of scroll each, then the hold on the last. */
+  height: calc(100svh + (var(--beats) + var(--tail-ratio)) * var(--beat));
+}
+
+.signal-scale-panel {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  /* Contains the enormous type at any viewport width. Nothing in here is
+     focusable, so there is no focus ring to clip. */
+  overflow: hidden;
+}
+
+.signal-scale-inner {
+  position: relative;
+  height: 100%;
+  /* The figures are sized off this box, not off the viewport: the content
+     column is capped at max-w-6xl, so a vw-based size would keep growing past
+     1152px and run the type straight off the edge on a wide monitor. */
+  container-type: inline-size;
+}
+
+.signal-scale-rail {
+  position: absolute;
+  left: 1.5rem;
+  top: 22svh;
+  /* --rail-h is read back by the head's transform, so the two must match. */
+  --rail-h: 56svh;
+  height: var(--rail-h);
+  width: 8px;
+}
+
+.signal-scale-head {
+  position: absolute;
+  top: -3.5px;
+  left: calc(var(--rail-x) - 3.5px);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  transform: translate3d(0, calc(var(--p, 1) * var(--rail-h)), 0);
+}
+
+.signal-beats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.signal-beat {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: calc(1.5rem + var(--rail-col));
+  padding-right: 1.5rem;
+}
+
+.signal-beat-value {
+  display: block;
+  /* Enormous: sized so the longest value (STILL) comes within a hair of the
+     column edge, which puts the two-digit figures at well over half the
+     screen. The svh term is the guard for a short landscape phone, where
+     34cqi of a wide container would otherwise overflow vertically. */
+  font-size: clamp(3.5rem, min(42cqi, 52svh), 32rem);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  /* Set in caps here rather than in the config, so the config keeps readable
+     values and `readAs` can stay a natural-language phrase for screen
+     readers. */
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.signal-beat-word {
+  display: block;
+  margin-top: clamp(1rem, 2.5vw, 2rem);
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.signal-root[data-signal-motion="on"] .signal-beat-value {
+  opacity: var(--o, 1);
+  transform: translate3d(0, var(--ty, 0px), 0);
+  will-change: opacity, transform;
+}
+
+.signal-root[data-signal-motion="on"] .signal-beat-word {
+  opacity: var(--wo, 1);
+  transform: translate3d(0, var(--wty, 0px), 0);
+  will-change: opacity, transform;
+}
+
+/* Motion off: no sticky, no stacking, no opacity. Five plain sections in
+   order, each one screenful, fully legible. */
+.signal-root:not([data-signal-motion="on"]) .signal-scale {
+  height: auto;
+}
+
+.signal-root:not([data-signal-motion="on"]) .signal-scale-panel {
+  position: static;
+  height: auto;
+  overflow: visible;
+}
+
+.signal-root:not([data-signal-motion="on"]) .signal-scale-rail {
+  display: none;
+}
+
+.signal-root:not([data-signal-motion="on"]) .signal-beat {
+  position: static;
+  min-height: 60svh;
+  padding-left: var(--rail-col);
+}
+
+/* --- Terminus: the line lands on 01 -------------------------------------- */
+
+.signal-terminus {
+  position: relative;
+  height: 20svh;
+  min-height: 8rem;
+  margin-bottom: 1.25rem;
+}
+
+.signal-node-end {
+  top: auto;
+  bottom: -3.5px;
+}
+
+.signal-root[data-signal-motion="on"] .signal-node-end {
+  background: var(--signal-dim);
+}
+
+.signal-root[data-signal-motion="on"]
+  .signal-terminus[data-on="1"]
+  .signal-node-end,
+.signal-root[data-signal-motion="on"]
+  .signal-terminus[data-on="2"]
+  .signal-node-end {
+  background: var(--signal);
+}
+
+/* Arrival. The Ask Amol input's border ticks once in --signal, and then the
+   animation is gone: no fill mode, so the field's own focus styling is not
+   permanently overridden by the last keyframe.
+
+   Reached across the tree rather than through a prop so AskAmol.tsx — the one
+   genuinely interactive thing on this page — needs no changes at all. */
+.signal-root[data-signal-arrived="1"] #ask-amol-input {
+  animation: signal-tick 1100ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes signal-tick {
+  0%,
+  100% {
+    border-color: var(--border-strong);
+  }
+  18%,
+  55% {
+    border-color: var(--signal);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-root[data-signal-arrived="1"] #ask-amol-input {
+    animation: none;
+  }
+}
+
+/* --- Echoes: section numbers 01 to 04 ------------------------------------ */
+
+/* Present on every SectionLabel across the site. Inert everywhere except the
+   home page, where SignalRoot is the only thing that ever sets data-on. */
+.signal-index {
+  position: relative;
+}
+
+.signal-index::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.3rem;
+  height: 1px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.signal-root[data-signal-motion="on"] .signal-index {
+  transition: opacity 300ms linear;
+}
+
+.signal-root[data-signal-motion="on"] .signal-index[data-on="0"] {
+  opacity: 0.35;
+}
+
+.signal-root[data-signal-motion="on"] .signal-index::after {
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.signal-root[data-signal-motion="on"] .signal-index[data-on="1"]::after {
+  transform: scaleX(1);
+}
+
+/* --- Final node ---------------------------------------------------------- */
+
+/* A period on the sentence, beside "built from scratch". Nothing animated. */
+.signal-final-node {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal-dim);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}

@@ -105,7 +105,13 @@ export function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
-      <span className="text-[var(--accent)]">{index}</span>
+      {/* data-signal-index is the hook the home page's signal system uses to
+          echo this number as its section arrives (see globals.css). It is
+          inert on every other page — nothing there ever sets data-on, so the
+          underline stays at scaleX(0) and this renders exactly as before. */}
+      <span data-signal-index className="signal-index text-[var(--accent)]">
+        {index}
+      </span>
       <span className="h-px w-8 bg-[var(--border)]" />
       {/* Icon and title read as one unit, so they sit closer than the gap-3
           separating them from the rule. */}

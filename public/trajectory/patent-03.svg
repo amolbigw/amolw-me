@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img">
+  <rect width="800" height="1000" fill="#101013"/>
+  <rect x="0.5" y="0.5" width="799" height="999" fill="none" stroke="#4a4a52"/>
+  <text x="60" y="86" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="26" letter-spacing="3">FIG. 3</text>
+  <rect x="150" y="190" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="364" y="210" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">10</text>
+  <rect x="450" y="190" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="664" y="210" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">12</text>
+  <rect x="300" y="400" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="514" y="420" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">14</text>
+  <rect x="150" y="620" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="364" y="640" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">16</text>
+  <rect x="450" y="620" width="200" height="110" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="664" y="640" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">18</text>
+  <rect x="300" y="820" width="200" height="90" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="514" y="840" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="20">20</text>
+  <path d="M250 300 L400 400" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M550 300 L400 400" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M400 510 L250 620" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M400 510 L550 620" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M250 730 L400 820" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <path d="M550 730 L400 820" fill="none" stroke="#4a4a52" stroke-width="2"/>
+  <text x="400" y="978" fill="#7d7d86" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="17" letter-spacing="1.7391304347826086" text-anchor="middle">PLACEHOLDER · PATENT DRAWING 3</text>
+</svg>
