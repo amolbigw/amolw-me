@@ -42,7 +42,7 @@ export default function NewsPage() {
     <div className="mx-auto max-w-6xl px-6">
       <JsonLd data={pressSchema} />
       <section className="pt-20 pb-16">
-        <SectionLabel index="01">Press</SectionLabel>
+        <SectionLabel icon="press" index="01">Press</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium">
           In the <span className="text-[var(--accent)]">news</span>
         </h1>

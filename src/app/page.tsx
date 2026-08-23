@@ -94,7 +94,7 @@ export default function Home() {
       <div className="mx-auto max-w-6xl px-6">
       {/* Ask Amol */}
       <section className="pb-32">
-        <SectionLabel index="01">Ask Amol</SectionLabel>
+        <SectionLabel icon="chat" index="01">Ask Amol</SectionLabel>
         <div className="mt-10">
           <AskAmol />
         </div>
@@ -103,7 +103,7 @@ export default function Home() {
       {/* Press */}
       <section className="pb-32">
         <div className="flex items-end justify-between mb-10">
-          <SectionLabel index="02">Selected press</SectionLabel>
+          <SectionLabel icon="press" index="02">Selected press</SectionLabel>
           <Link
             href="/news"
             className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
@@ -121,7 +121,7 @@ export default function Home() {
       {/* Thoughts */}
       <section className="pb-32">
         <div className="flex items-end justify-between mb-10">
-          <SectionLabel index="03">Recent writing</SectionLabel>
+          <SectionLabel icon="pen" index="03">Recent writing</SectionLabel>
           <Link
             href="/thoughts"
             className="text-xs uppercase tracking-widest text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
@@ -159,7 +159,7 @@ export default function Home() {
 
       {/* Currently */}
       <section className="pb-32">
-        <SectionLabel index="04">Currently</SectionLabel>
+        <SectionLabel icon="pulse" index="04">Currently</SectionLabel>
         <div className="mt-10 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <div className="bg-[var(--background)] p-8">
             <div className="text-xs uppercase tracking-widest text-[var(--muted)] mb-3">

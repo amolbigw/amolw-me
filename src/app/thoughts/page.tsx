@@ -45,7 +45,7 @@ export default function ThoughtsPage() {
     <div className="mx-auto max-w-6xl px-6">
       <JsonLd data={blogSchema} />
       <section className="pt-20 pb-16">
-        <SectionLabel index="02">Thoughts</SectionLabel>
+        <SectionLabel icon="pen" index="02">Thoughts</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium">
           Writing &<br />
           <span className="text-[var(--accent)]">experiments</span>

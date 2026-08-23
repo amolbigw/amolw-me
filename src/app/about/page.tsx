@@ -33,7 +33,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-6xl px-6">
       <JsonLd data={profileSchema} />
       <section className="pt-20 pb-20">
-        <SectionLabel index="00">About</SectionLabel>
+        <SectionLabel icon="person" index="00">About</SectionLabel>
         <div className="mt-6 grid gap-10 sm:grid-cols-12 sm:items-end sm:gap-12">
           <h1 className="sm:col-span-8 font-sans text-[clamp(2rem,4.5vw,4rem)] leading-[1.02] tracking-tight font-medium">
             Lifelong{" "}
@@ -103,7 +103,7 @@ export default function AboutPage() {
       </section>
 
       <section className="pb-32">
-        <SectionLabel index="01">Path</SectionLabel>
+        <SectionLabel icon="path" index="01">Path</SectionLabel>
         <div className="mt-10 border-t border-[var(--border)]">
           {timeline.map((t) => (
             <div
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </section>
 
       <section className="pb-32">
-        <SectionLabel index="02">Reach out</SectionLabel>
+        <SectionLabel icon="mail" index="02">Reach out</SectionLabel>
         <div className="mt-8 grid gap-px bg-[var(--border)] sm:grid-cols-3">
           <a
             href="mailto:amolbigw@gmail.com"

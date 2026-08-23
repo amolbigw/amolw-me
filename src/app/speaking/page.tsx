@@ -78,7 +78,7 @@ export default function SpeakingPage() {
     <div className="mx-auto max-w-6xl px-6">
       <JsonLd data={faqSchema} />
       <section className="pt-20 pb-16">
-        <SectionLabel index="03">Speaking</SectionLabel>
+        <SectionLabel icon="mic" index="03">Speaking</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2.5rem,6vw,5rem)] leading-[0.95] tracking-tight font-medium">
           Talks &<br />
           <span className="text-[var(--accent)]">interviews</span>
@@ -93,7 +93,7 @@ export default function SpeakingPage() {
       </section>
 
       <section className="pb-20">
-        <SectionLabel index="04">Topics</SectionLabel>
+        <SectionLabel icon="tag" index="04">Topics</SectionLabel>
         <div className="mt-8 grid gap-px bg-[var(--border)] sm:grid-cols-2">
           {topics.map((t, i) => (
             <div key={t.title} className="bg-[var(--background)] p-6 sm:p-8">
@@ -110,7 +110,7 @@ export default function SpeakingPage() {
       </section>
 
       <section className="pb-20">
-        <SectionLabel index="05">Formats</SectionLabel>
+        <SectionLabel icon="layers" index="05">Formats</SectionLabel>
         <div className="mt-8 flex flex-wrap gap-2">
           {formats.map((f) => (
             <span
@@ -124,7 +124,7 @@ export default function SpeakingPage() {
       </section>
 
       <section className="pb-20">
-        <SectionLabel index="06">Questions</SectionLabel>
+        <SectionLabel icon="help" index="06">Questions</SectionLabel>
         <div className="mt-8 border-t border-[var(--border)]">
           {faqs.map((f) => (
             <div
@@ -143,7 +143,7 @@ export default function SpeakingPage() {
       </section>
 
       <section className="pb-32">
-        <SectionLabel index="07">Get in touch</SectionLabel>
+        <SectionLabel icon="mail" index="07">Get in touch</SectionLabel>
         <div className="mt-8 border border-[var(--border)] p-6 sm:p-12">
           <p className="text-lg sm:text-2xl leading-snug max-w-2xl">
             Send a brief — date, audience, format, and anything specific you&apos;d

@@ -107,7 +107,7 @@ export default async function ThoughtPage(
       </div>
 
       <header className="pb-10 border-b border-[var(--border)]">
-        <SectionLabel index="—">{formattedDate}</SectionLabel>
+        <SectionLabel icon="calendar" index="—">{formattedDate}</SectionLabel>
         <h1 className="mt-6 font-sans text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.05] tracking-tight font-medium">
           {t.title}
         </h1>
