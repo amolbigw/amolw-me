@@ -12,11 +12,14 @@ export function SignalOrigin() {
   return (
     <span className="signal-origin text-[var(--signal)]">
       ●
+      {/* Height is set in CSS so it can shorten on narrow screens; the stroke
+          is a plain vertical, so scaling it on one axis costs nothing. */}
       <svg
         className="signal-origin-line"
         width="8"
         height="34"
         viewBox="0 0 8 34"
+        preserveAspectRatio="none"
         aria-hidden="true"
         focusable="false"
       >

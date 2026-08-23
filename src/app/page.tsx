@@ -46,7 +46,7 @@ export default function Home() {
         />
         <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-16 sm:pt-28 sm:pb-28">
           <div className="reveal">
-          <div className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
+          <div className="relative text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <SignalOrigin />
             <span className="ml-3">Co-founder · Running fullthrottle.ai</span>
           </div>

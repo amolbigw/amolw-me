@@ -194,15 +194,31 @@ body {
 
 /* --- Origin: the hero dot ------------------------------------------------ */
 
+/* Deliberately NOT the positioning context for the line below. The dot is an
+   inline box, so anchoring to it means anchoring to whichever line of the
+   eyebrow the dot happens to land on — and the eyebrow wraps to two lines on a
+   narrow screen, which put the line straight through the second one. The
+   eyebrow block is the anchor instead, so the line always starts below all of
+   it, at any wrap. */
 .signal-origin {
-  position: relative;
+  position: static;
 }
 
 .signal-origin-line {
   position: absolute;
   top: calc(100% + 3px);
-  left: 50%;
-  transform: translateX(-50%);
+  /* The svg is 8px wide with its stroke at x=4, and the eyebrow's content box
+     starts at the content column's left edge — so left:0 puts the stroke on
+     --rail-x, the same plumb line as the dot, the section numbers and the
+     trajectory rail. */
+  left: 0;
+  /* The stroke hangs into the 2rem gap below the eyebrow and then into the H1's
+     leading, and that leading shrinks with the H1: ~13px of it at the desktop
+     size, ~5px at the mobile minimum. A fixed length that clears the A on a
+     phone and on a desktop still closes to about a pixel around 640-700px,
+     where the heading has already shrunk but the eyebrow has not yet wrapped.
+     Scaling it continuously keeps at least 8px of daylight at every width. */
+  height: clamp(20px, 2.6vw, 34px);
   overflow: visible;
 }
 
