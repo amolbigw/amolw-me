@@ -565,11 +565,17 @@ body {
 
 .signal-beat-value {
   display: block;
-  /* Enormous: sized so the longest value (STILL) comes within a hair of the
-     column edge, which puts the two-digit figures at well over half the
-     screen. The svh term is the guard for a short landscape phone, where
-     34cqi of a wide container would otherwise overflow vertically. */
-  font-size: clamp(3.5rem, min(42cqi, 52svh), 32rem);
+  /* Enormous: sized so the widest figure (10+ and 100, at 1.64em) comes within
+     a hair of the column edge.
+
+     This was originally set by STILL, back when all five beats shared a size.
+     Once STILL became a two-line statement with its own sizing, these four
+     were left scaled for a five-character word they no longer contain — worth
+     about 40% of headroom that nothing was using.
+
+     The svh term is the guard for a short landscape phone, where sizing off a
+     wide container would overflow vertically. */
+  font-size: clamp(3.5rem, min(53cqi, 62svh), 40rem);
   line-height: 0.86;
   letter-spacing: -0.04em;
   /* Set in caps here rather than in the config, so the config keeps readable
