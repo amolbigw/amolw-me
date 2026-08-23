@@ -160,18 +160,31 @@ export function AskAmol() {
 
       <div className="px-6 py-6 sm:px-8">
         {turns.length === 0 ? (
-          <div className="flex flex-wrap gap-2">
-            {SUGGESTED.map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => send(q)}
-                disabled={busy}
-                className="inline-flex min-h-11 items-center border border-[var(--border-strong)] px-4 py-2 text-left text-sm text-[var(--muted)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-50"
-              >
-                {q}
-              </button>
-            ))}
+          <div>
+            <div className="text-xs uppercase tracking-[0.2em] text-[var(--accent)]">
+              Start with
+            </div>
+            {/* Full-width rows on mobile, where these are the likeliest entry
+                point and a wrapped pill row is hard to parse. The fill and the
+                leading arrow are what separate a tappable suggestion from the
+                empty input below it; without them all six boxes on a phone
+                read as the same kind of hairline rectangle. */}
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+              {SUGGESTED.map((q) => (
+                <button
+                  key={q}
+                  type="button"
+                  onClick={() => send(q)}
+                  disabled={busy}
+                  className="flex min-h-11 w-full items-start gap-3 border border-[var(--border)] bg-white/[0.03] px-4 py-2.5 text-left text-sm text-[var(--foreground)] transition-colors hover:border-[var(--accent)] hover:bg-white/[0.06] disabled:opacity-50 sm:w-auto"
+                >
+                  <span aria-hidden className="flex-none text-[var(--accent)]">
+                    &rarr;
+                  </span>
+                  <span>{q}</span>
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="space-y-8">
@@ -243,11 +256,13 @@ export function AskAmol() {
               e.preventDefault();
               send(input);
             }}
-            className="mt-6 flex flex-col gap-3 sm:flex-row"
+            className="mt-6 flex items-stretch gap-2"
           >
             <label htmlFor="ask-amol-input" className="sr-only">
               Ask a question about Amol&apos;s writing
             </label>
+            {/* min-w-0 so the field can shrink inside the flex row instead of
+                its placeholder forcing an overflow and clipping mid-word. */}
             <input
               id="ask-amol-input"
               type="text"
@@ -255,13 +270,19 @@ export function AskAmol() {
               maxLength={MAX_CHARS}
               onChange={(e) => setInput(e.target.value)}
               disabled={busy}
-              placeholder="Ask about first-party data, CTV, AI in marketing…"
-              className="min-h-11 flex-1 border border-[var(--border-strong)] bg-transparent px-4 py-2 text-base text-[var(--foreground)] placeholder:text-[var(--muted)] focus-visible:border-[var(--accent)] disabled:opacity-50"
+              placeholder="Ask a question…"
+              className="min-h-11 min-w-0 flex-1 border border-[var(--border-strong)] bg-transparent px-4 py-2 text-base text-[var(--foreground)] placeholder:text-[var(--muted)] focus-visible:border-[var(--accent)] disabled:opacity-50"
             />
+            {/* Lights up in accent the moment there is something to send, so at
+                rest it reads as waiting rather than as a greyed-out control. */}
             <button
               type="submit"
               disabled={busy || !input.trim()}
-              className="inline-flex min-h-11 items-center justify-center border border-[var(--border-strong)] px-5 py-2 text-xs uppercase tracking-widest transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-50"
+              className={`inline-flex min-h-11 flex-none items-center justify-center border px-3 text-xs uppercase tracking-widest transition-colors sm:px-4 ${
+                busy || !input.trim()
+                  ? "border-[var(--border)] text-[var(--muted)]"
+                  : "border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-[var(--background)]"
+              }`}
             >
               {busy ? "Reading…" : "Ask"}
             </button>
