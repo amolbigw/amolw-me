@@ -546,6 +546,24 @@ body {
   will-change: opacity, transform;
 }
 
+/* A statement beat is one sentence over two lines, so both lines take display
+   size. The size is set by the longer line — BUILDING. at nine characters, not
+   STILL at five — which is why it is smaller than the figure beats: the block
+   still fills the column, it just fills it with twice as much type. */
+.signal-beat[data-statement] .signal-beat-value,
+.signal-beat[data-statement] .signal-beat-word {
+  font-size: clamp(2.5rem, min(20cqi, 34svh), 18rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.signal-beat[data-statement] .signal-beat-word {
+  margin-top: 0;
+}
+
 /* Motion off: no sticky, no stacking, no opacity. Five plain sections in
    order, each one screenful, fully legible. */
 .signal-root:not([data-signal-motion="on"]) .signal-scale {

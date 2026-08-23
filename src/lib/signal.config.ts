@@ -145,6 +145,16 @@ export type ScaleBeat = {
   word: string;
   /** How the pair should be read aloud, since "03" is not "three". */
   readAs: string;
+  /**
+   * Set on a beat that is a sentence rather than a figure and its unit.
+   *
+   * The other beats are `03` + `PATENTS`: the figure is the fact and the word
+   * labels it, so the size split between them is the point. STILL BUILDING. is
+   * one statement, and splitting it the same way breaks the phrase in half and
+   * leaves the closing line reading as a caption. A statement beat sets both
+   * lines at display size instead.
+   */
+  statement?: boolean;
 };
 
 export const scaleBeats: ScaleBeat[] = [
@@ -152,7 +162,7 @@ export const scaleBeats: ScaleBeat[] = [
   { value: "01", word: "Exit", readAs: "One exit" },
   { value: "100", word: "People", readAs: "One hundred people" },
   { value: "10+", word: "Years building", readAs: "Ten plus years building" },
-  { value: "Still", word: "Building.", readAs: "Still building." },
+  { value: "Still", word: "Building.", readAs: "Still building.", statement: true },
 ];
 
 /**

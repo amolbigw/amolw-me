@@ -53,6 +53,7 @@ export function ScaleSequence() {
                 key={b.value + b.word}
                 className="signal-beat"
                 data-signal-beat
+                data-statement={b.statement ? "" : undefined}
                 aria-label={b.readAs}
               >
                 <span className="signal-beat-value" aria-hidden>
