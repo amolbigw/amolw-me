@@ -44,7 +44,7 @@ export default function Home() {
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-gradient-to-l from-[var(--background)] to-transparent to-25%"
         />
-        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-28 sm:pb-40">
+        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-16 sm:pt-28 sm:pb-28">
           <div className="reveal">
           <div className="text-xs uppercase tracking-[0.25em] text-[var(--muted)] mb-8">
             <SignalOrigin />

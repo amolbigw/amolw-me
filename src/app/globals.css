@@ -232,8 +232,8 @@ body {
 
 .signal-lead {
   position: relative;
-  height: 18svh;
-  min-height: 7rem;
+  height: 10svh;
+  min-height: 4rem;
 }
 
 .signal-track {
@@ -421,7 +421,7 @@ body {
    milestones keep their spacing relative to the copy and give back the slack. */
 @media (max-width: 639px) {
   .signal-lead {
-    height: 14svh;
+    height: 8svh;
   }
 
   .signal-row {
