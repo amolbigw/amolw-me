@@ -65,7 +65,12 @@ export default function Home() {
           <div className="mt-10 flex flex-col gap-12 xl:flex-row xl:items-start xl:justify-between xl:gap-16">
           <div className="max-w-2xl">
           <p className="text-lg sm:text-xl leading-relaxed text-[var(--muted)]">
-            I run{" "}
+            {/* Lead-in earns --foreground: it is the claim the accolade wall
+                beside it backs up, and in --muted it reads as throat-clearing. */}
+            <span className="text-[var(--foreground)]">
+              Award-winning operator
+            </span>
+            . I run{" "}
             <a
               href="https://www.fullthrottle.ai/who-we-are/team/"
               target="_blank"
