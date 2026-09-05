@@ -1,47 +1,29 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
-import { thoughts } from "@/lib/thoughts";
+import { thoughts, thoughtLastModified, latestThoughtDate } from "@/lib/thoughts";
+import { pressLastModified } from "@/lib/press";
+import { LAST_UPDATED as aboutLastModified } from "@/app/about/page";
+import { LAST_UPDATED as speakingLastModified } from "@/app/speaking/page";
 
+/**
+ * Every entry carries a date-only <lastmod> (YYYY-MM-DD, valid per the sitemap
+ * spec) sourced from the content that actually dates the page. Deliberately
+ * absent:
+ *
+ * - changefreq and priority. Google ignores both.
+ * - Any build or deploy timestamp. A lastmod that moves on every deploy is
+ *   read as inaccurate and gets the field discounted across the whole site.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  // thoughts is sorted newest first, so the first entry dates the index pages.
-  const latestThought = new Date(thoughts[0].date);
-
   return [
-    {
-      url: absoluteUrl("/"),
-      lastModified: latestThought,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: absoluteUrl("/about"),
-      lastModified: latestThought,
-      changeFrequency: "yearly",
-      priority: 0.9,
-    },
-    {
-      url: absoluteUrl("/thoughts"),
-      lastModified: latestThought,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: absoluteUrl("/news"),
-      lastModified: latestThought,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: absoluteUrl("/speaking"),
-      lastModified: latestThought,
-      changeFrequency: "yearly",
-      priority: 0.7,
-    },
+    { url: absoluteUrl("/"), lastModified: latestThoughtDate },
+    { url: absoluteUrl("/about"), lastModified: aboutLastModified },
+    { url: absoluteUrl("/thoughts"), lastModified: latestThoughtDate },
+    { url: absoluteUrl("/news"), lastModified: pressLastModified },
+    { url: absoluteUrl("/speaking"), lastModified: speakingLastModified },
     ...thoughts.map((t) => ({
       url: absoluteUrl(`/thoughts/${t.slug}`),
-      lastModified: new Date(t.date),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
+      lastModified: thoughtLastModified(t),
     })),
   ];
 }

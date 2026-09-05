@@ -12,7 +12,14 @@ export type FaqPair = {
 export type Thought = {
   slug: string;
   title: string;
+  /** Publication date, YYYY-MM-DD. Never changes once an essay is live. */
   date: string;
+  /**
+   * Date of the last material revision, YYYY-MM-DD. Bump it when the prose
+   * changes in a way worth recrawling; leave it unset otherwise. Sitemap
+   * <lastmod> and the page's dateModified both read `updated ?? date`.
+   */
+  updated?: string;
   excerpt: string;
   /** 40-60 word direct answer rendered under the H1, before the narrative. */
   answer?: string;

@@ -6,7 +6,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SectionLabel } from "@/components/SectionLabel";
 import { JsonLd } from "@/components/JsonLd";
-import { getThought, getAllThoughtSlugs } from "@/lib/thoughts";
+import {
+  getThought,
+  getAllThoughtSlugs,
+  thoughtLastModified,
+} from "@/lib/thoughts";
 import { pageMeta } from "@/lib/seo";
 import { site, absoluteUrl } from "@/lib/site";
 
@@ -26,6 +30,7 @@ export async function generateMetadata(
     path: `/thoughts/${slug}`,
     article: {
       publishedTime: t.date,
+      modifiedTime: t.updated,
       images: t.coverImage ? [t.coverImage] : undefined,
     },
   });
@@ -54,6 +59,8 @@ export default async function ThoughtPage(
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     datePublished: t.date,
+    // Corroborates the sitemap's <lastmod>; Google cross-checks the two.
+    dateModified: thoughtLastModified(t),
     inLanguage: "en-US",
     isPartOf: { "@id": `${site.url}/thoughts#blog` },
     author: { "@id": `${site.url}/#person` },

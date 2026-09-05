@@ -20,7 +20,7 @@ type PageMetaInput = {
   /** Root-relative path, used for the canonical URL and og:url. */
   path: string;
   /** Set for article pages so Open Graph emits article:* tags. */
-  article?: { publishedTime: string; images?: string[] };
+  article?: { publishedTime: string; modifiedTime?: string; images?: string[] };
   /** Use the title verbatim, ignoring the root title template. */
   absoluteTitle?: boolean;
 };
@@ -50,7 +50,13 @@ export function pageMeta({
       description,
       images: article?.images ?? [defaultOgImage],
       ...(article
-        ? { publishedTime: article.publishedTime, authors: [site.name] }
+        ? {
+            publishedTime: article.publishedTime,
+            ...(article.modifiedTime
+              ? { modifiedTime: article.modifiedTime }
+              : {}),
+            authors: [site.name],
+          }
         : {}),
     },
     twitter: {

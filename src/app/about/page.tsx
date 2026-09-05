@@ -13,6 +13,13 @@ export const metadata: Metadata = pageMeta({
   path: "/about",
 });
 
+/**
+ * Sitemap <lastmod> for this page. Bump it when the copy on the page
+ * materially changes -- not on every deploy. A lastmod that moves without the
+ * content moving is treated as inaccurate and gets the field ignored.
+ */
+export const LAST_UPDATED = "2026-08-22";
+
 const profileSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",

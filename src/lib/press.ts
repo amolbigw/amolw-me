@@ -344,3 +344,34 @@ export const press: PressItem[] = [
     logo: LOGOS.digiday,
   },
 ];
+
+const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+/** "Mar 26, 2026" -> "2026-03-26". Null when the string is not that shape. */
+function toIsoDate(date: string): string | null {
+  const m = /^([A-Za-z]{3})[a-z]* (\d{1,2}), (\d{4})$/.exec(date.trim());
+  const month = m ? MONTHS.indexOf(m[1]) : -1;
+  if (!m || month < 0) return null;
+  return `${m[3]}-${String(month + 1).padStart(2, "0")}-${m[2].padStart(2, "0")}`;
+}
+
+/**
+ * Newest press date, as YYYY-MM-DD, used as <lastmod> for /news. Only items
+ * carrying a `date` can move it -- `year` alone is too coarse for lastmod --
+ * so a new entry added without a date will not tell Google the page changed.
+ * Give new entries a `date`.
+ */
+export const pressLastModified: string = (() => {
+  const dates = press
+    .map((item) => (item.date ? toIsoDate(item.date) : null))
+    .filter((d): d is string => d !== null)
+    .sort();
+
+  if (dates.length === 0) {
+    throw new Error("No press item carries a parseable date; /news has no lastmod.");
+  }
+  return dates[dates.length - 1];
+})();

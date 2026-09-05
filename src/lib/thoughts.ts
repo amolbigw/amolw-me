@@ -32,6 +32,26 @@ export const thoughts: Thought[] = [
   cookiesSimplified,
 ].sort((a, b) => (a.date < b.date ? 1 : -1));
 
+/**
+ * Sitemap <lastmod> and schema dateModified for a single essay: the revision
+ * date when there is one, otherwise the publication date. Already YYYY-MM-DD,
+ * which is what both consumers want.
+ */
+export function thoughtLastModified(t: Thought): string {
+  return t.updated ?? t.date;
+}
+
+/**
+ * Newest modification across the whole essay set, which dates the pages that
+ * list essays (/ and /thoughts). Not the same as `thoughts[0]` -- revising an
+ * older essay makes it the most recently modified without reordering the list.
+ * ISO dates sort lexically, so a string compare is the right compare.
+ */
+export const latestThoughtDate: string = thoughts.reduce(
+  (newest, t) => (thoughtLastModified(t) > newest ? thoughtLastModified(t) : newest),
+  "",
+);
+
 /** Strip the markdown emphasis and line wrapping that `body` carries. */
 function normalize(text: string): string {
   return text.replace(/\*+/g, "").replace(/\s+/g, " ").trim();
