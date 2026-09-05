@@ -4,6 +4,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { PressRow } from "@/components/PressRow";
 import { VantaGlobe } from "@/components/VantaGlobe";
 import { AskAmol } from "@/components/AskAmol";
+import { Accolades } from "@/components/Accolades";
 import { SignalRoot } from "@/components/signal/SignalRoot";
 import { SignalOrigin } from "@/components/signal/SignalOrigin";
 import { SignalTerminus } from "@/components/signal/SignalTerminus";
@@ -57,7 +58,13 @@ export default function Home() {
             <span className="text-[var(--accent)]">Waishampayan</span>
           </h1>
 
-          <p className="mt-10 max-w-2xl text-lg sm:text-xl leading-relaxed text-[var(--muted)]">
+          {/* Below the headline the hero splits: copy keeps its measure on the
+              left, the accolade wall takes the space the globe was using on the
+              right. Above xl there is no room beside the paragraph, so the wall
+              drops underneath it and widens. */}
+          <div className="mt-10 flex flex-col gap-12 xl:flex-row xl:items-start xl:justify-between xl:gap-16">
+          <div className="max-w-2xl">
+          <p className="text-lg sm:text-xl leading-relaxed text-[var(--muted)]">
             I run{" "}
             <a
               href="https://www.fullthrottle.ai/who-we-are/team/"
@@ -100,6 +107,10 @@ export default function Home() {
             >
               Get in touch
             </a>
+          </div>
+          </div>
+
+          <Accolades />
           </div>
           </div>
         </div>
