@@ -14,6 +14,7 @@ export const site = {
   email: "amolbigw@gmail.com",
   linkedin: "https://www.linkedin.com/in/amolw",
   instagram: "https://www.instagram.com/amolw",
+  wikidata: "https://www.wikidata.org/entity/Q141311145",
   title: "Amol Waishampayan · Co-founder, fullthrottle.ai",
   description:
     "Co-founder of fullthrottle.ai, running the business across revenue, sales, customer success, product, engineering, and operations. Three patents, one exit.",
@@ -37,7 +38,9 @@ export const site = {
   ],
 } as const;
 
-export const socialProfiles = [site.linkedin, site.instagram];
+/** Feeds `sameAs` on the Person node. Wikidata is an authority record
+    rather than a social profile, but `sameAs` is where it belongs. */
+export const socialProfiles = [site.linkedin, site.instagram, site.wikidata];
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, site.url).toString();
