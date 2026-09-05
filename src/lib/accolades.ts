@@ -51,6 +51,13 @@ export const accolades: Accolade[] = [
     display: 44,
   },
   {
+    name: "IAB",
+    src: "/logos/hero/iab.png",
+    width: 274,
+    height: 138,
+    display: 26,
+  },
+  {
     name: "AdExchanger",
     src: "/logos/hero/adexchanger.png",
     width: 474,
@@ -63,12 +70,5 @@ export const accolades: Accolade[] = [
     width: 496,
     height: 88,
     display: 24,
-  },
-  {
-    name: "IAB",
-    src: "/logos/hero/iab.png",
-    width: 274,
-    height: 138,
-    display: 26,
   },
 ];
