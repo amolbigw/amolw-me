@@ -390,6 +390,16 @@ body {
   border: 0;
 }
 
+/* The loop is drawn on its own near-black, #060507 against a #0a0a0b page.
+   With no frame to hold the edge, four levels is enough to read as a faintly
+   darker rectangle. `lighten` takes the max of source and backdrop per
+   channel, so anything below the page colour becomes exactly the page colour
+   and the teal and white — every one of them brighter — passes through
+   untouched. Cheaper and truer than regrading the file. */
+.signal-artifact--bare video {
+  mix-blend-mode: lighten;
+}
+
 /* An artifact that belongs to two milestones rather than one. Driven by height
    instead of width, because what has to line up is the run of rows beside it:
    both are svh min-heights (38 + 22), so 60svh tracks the pair at any viewport

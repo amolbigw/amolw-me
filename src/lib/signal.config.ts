@@ -273,6 +273,7 @@ export const milestones: Milestone[] = [
         width: 640,
         height: 360,
         scale: 1.25,
+        bare: true,
       },
     ],
   },
