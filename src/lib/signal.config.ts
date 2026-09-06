@@ -132,6 +132,20 @@ export const milestones: Milestone[] = [
     label: "Exit",
     meta: "2016",
     note: "Acquired by Stream Companies.",
+    artifacts: [
+      {
+        /* Stream Companies' own cover art, feathered into the page at both
+           ends rather than cropped: the useful width varies by band, so a
+           hard crop would either clip the tagline or leave dead building
+           beside the award rows. `bare` because a frame would box the fade. */
+        src: "/trajectory/stream-companies.webp",
+        alt: "Stream Companies branding: Inc. 5000 winner nineteen times, Best Places to Work in PA winner five times, an award-winning full-service tech-enabled ad agency.",
+        caption: "Stream Companies",
+        width: 900,
+        height: 351,
+        bare: true,
+      },
+    ],
   },
   {
     id: "stream",
