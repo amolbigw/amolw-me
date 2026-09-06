@@ -102,8 +102,10 @@ export type Milestone = {
   /** One line. Two at the very most. */
   note?: string;
   /**
-   * Three or four milestones carry artifacts, never all of them. The restraint
-   * is what makes the ones that do land.
+   * This started as "three or four milestones, never all of them" and has
+   * since grown to seven of nine. Only `stream` and `now` are still bare, so
+   * the run reads as an unbroken column rather than as a few moments that
+   * earn a picture. Worth a pass before adding an eighth.
    */
   artifacts?: SignalArtifact[];
 };
@@ -139,6 +141,17 @@ export const milestones: Milestone[] = [
     label: "Built",
     meta: "2012 — 2016",
     note: "Four years turning an agency from an idea into a business.",
+    artifacts: [
+      {
+        /* Keeps its frame: the source ground is #000 against a #0a0a0b page,
+           so without a border the grid would float with no edge at all. */
+        src: "/trajectory/maiden-work.webp",
+        alt: "A grid of Maiden Media Group client work: brand sites, packaging and campaign pages for fifteen clients.",
+        caption: "The work",
+        width: 1200,
+        height: 750,
+      },
+    ],
   },
   {
     id: "exit",
