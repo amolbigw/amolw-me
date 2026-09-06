@@ -676,6 +676,18 @@ body {
   margin-top: 0;
 }
 
+/* The same reasoning the phone block applies to the figure beats, pointed the
+   other way at the closing one. Nothing follows STILL BUILDING., so panel left
+   under it is pure dead scroll on the way to Ask Amol — it sits low instead of
+   centred, and the terminus picks up almost immediately. Not on a phone, where
+   the URL bar overlays the bottom of the viewport and low means hidden. */
+@media (min-width: 640px) {
+  .signal-beat[data-statement] {
+    justify-content: flex-end;
+    padding-bottom: 10svh;
+  }
+}
+
 /* Motion off: no sticky, no stacking, no opacity. Five plain sections in
    order, each one screenful, fully legible. */
 .signal-root:not([data-signal-motion="on"]) .signal-scale {
@@ -704,9 +716,11 @@ body {
 
 .signal-terminus {
   position: relative;
-  height: 20svh;
-  min-height: 8rem;
-  margin-bottom: 1.25rem;
+  /* Was 20svh. The line only has to read as arriving at the 01, and every
+     pixel of it is dead space between the closing statement and Ask Amol. */
+  height: 8svh;
+  min-height: 4rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Kept next to the rule it overrides rather than in the shared narrow-screen
