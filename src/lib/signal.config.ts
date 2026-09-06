@@ -20,6 +20,14 @@
  * ARTIFACT PROVENANCE — these are public files on a public site, served at
  * full resolution and indexed.
  *
+ * The Maiden Media team photo shows former colleagues, and the certificates
+ * they are holding carry their names. At the 448px the artifact renders those
+ * names are not readable, but the 900px file behind it is fetchable and they
+ * are. That is the same trade the platform screenshot makes and it is a
+ * deliberate call, not an oversight — the photo is Amol's own team and was
+ * already public before it landed here. Replacing it with a group shot of
+ * anyone outside that team needs its own clearance.
+ *
  * The platform screenshot shows a real account. Its spend, delivery and
  * attribution figures are that client's actual numbers, published with their
  * permission — Amol confirmed clearance before this went up. Only the account
@@ -87,6 +95,15 @@ export const milestones: Milestone[] = [
     label: "Maiden Media",
     meta: "2012",
     note: "First company. Founded in Philadelphia.",
+    artifacts: [
+      {
+        src: "/trajectory/maiden-team.jpg",
+        alt: "The Maiden Media team outside the Philadelphia office, holding up internal awards certificates.",
+        caption: "The team",
+        width: 900,
+        height: 551,
+      },
+    ],
   },
   {
     id: "built",
