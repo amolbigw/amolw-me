@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
+import { SoloEasterEgg } from "@/components/solo/SoloEasterEgg";
 import { site, socialProfiles, absoluteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -97,6 +98,7 @@ export default function RootLayout({
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
         <ParticleBackground />
+        <SoloEasterEgg />
         <Header />
 
         <main className="flex-1">{children}</main>
