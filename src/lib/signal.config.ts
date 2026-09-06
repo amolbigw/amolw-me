@@ -85,8 +85,10 @@ export type SignalArtifact = {
   video?: boolean;
   poster?: string;
   /**
-   * Fraction of the artifact column to occupy. Only for a piece whose natural
-   * size overwhelms the row — everything else fills the column.
+   * Multiplier on the artifact column's width. Only for a piece the default
+   * 28rem gets wrong in one direction or the other: the mosaic is far too tall
+   * at full width, the loop diagram too small to read. Read from the first
+   * artifact in a row, so it sizes the row rather than one figure in it.
    */
   scale?: number;
 };
@@ -248,6 +250,7 @@ export const milestones: Milestone[] = [
         caption: "The loop",
         width: 640,
         height: 360,
+        scale: 1.25,
       },
     ],
   },

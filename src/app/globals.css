@@ -335,7 +335,7 @@ body {
   grid-auto-columns: 1fr;
   gap: 0.5rem;
   margin-top: 2rem;
-  max-width: 34rem;
+  max-width: calc(34rem * var(--artifact-scale, 1));
 }
 
 @media (min-width: 900px) {
@@ -348,7 +348,7 @@ body {
     grid-row: 1;
     margin-top: 0;
     margin-left: 3rem;
-    max-width: 28rem;
+    max-width: calc(28rem * var(--artifact-scale, 1));
   }
 
   /* A pair splits the same box in half, which leaves each one too small to

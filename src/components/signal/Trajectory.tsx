@@ -53,7 +53,16 @@ export function Trajectory() {
             </div>
 
             {m.artifacts && (
-              <div className="signal-artifacts">
+              <div
+                className="signal-artifacts"
+                style={
+                  m.artifacts[0].scale
+                    ? ({
+                        "--artifact-scale": m.artifacts[0].scale,
+                      } as React.CSSProperties)
+                    : undefined
+                }
+              >
                 {m.artifacts.map((a, i) => {
                   {/* Plain <img>: the manifest holds intrinsic dimensions, so
                       the box is reserved before the file lands and CLS stays at
@@ -85,12 +94,7 @@ export function Trajectory() {
                           ? "signal-artifact signal-artifact--bare"
                           : "signal-artifact"
                       }
-                      style={
-                        {
-                          "--i": i,
-                          ...(a.scale ? { width: `${a.scale * 100}%` } : null),
-                        } as React.CSSProperties
-                      }
+                      style={{ "--i": i } as React.CSSProperties}
                     >
                       {a.href ? (
                         <a
