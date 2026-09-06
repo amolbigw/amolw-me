@@ -151,13 +151,15 @@ export const milestones: Milestone[] = [
     note: "Four years turning an agency from an idea into a business.",
     artifacts: [
       {
-        /* Keeps its frame: the source ground is #000 against a #0a0a0b page,
-           so without a border the grid would float with no edge at all. */
+        /* Bare: the source ground is now the page's own #0a0a0b, so the grid
+           bleeds into the column and a frame would only draw a box around
+           background it already matches. */
         src: "/trajectory/maiden-work.webp",
         alt: "A grid of Maiden Media Group client work: brand sites, packaging and campaign pages for fifteen clients.",
         caption: "The work",
         width: 1200,
         height: 750,
+        bare: true,
       },
     ],
   },
