@@ -350,6 +350,13 @@ body {
     margin-left: 3rem;
     max-width: 28rem;
   }
+
+  /* A pair splits the same box in half, which leaves each one too small to
+     read. Two get the rest of the column instead — the widest the third track
+     goes before the text column starts giving up width. */
+  .signal-row[data-artifacts="2"] .signal-artifacts {
+    max-width: 38rem;
+  }
 }
 
 .signal-artifact {

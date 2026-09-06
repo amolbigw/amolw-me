@@ -107,7 +107,17 @@ export const milestones: Milestone[] = [
         alt: "The Maiden Media team outside the Philadelphia office, holding up internal awards certificates.",
         caption: "The team",
         width: 900,
-        height: 551,
+        height: 450,
+      },
+      {
+        /* Moved up from `exit` so the pair reads as one row. The caption drops
+           the acquisition, which is a 2016 fact and would misdate the 2012
+           milestone it now sits on — `exit` still carries it in its note. */
+        src: "/trajectory/maidenmedia.jpg",
+        alt: "The Maiden Media Group page, describing the agency as a strategic creative agency acquired by Stream Companies",
+        caption: "The agency",
+        width: 900,
+        height: 449,
       },
     ],
   },
@@ -122,15 +132,6 @@ export const milestones: Milestone[] = [
     label: "Exit",
     meta: "2016",
     note: "Acquired by Stream Companies.",
-    artifacts: [
-      {
-        src: "/trajectory/maidenmedia.jpg",
-        alt: "The Maiden Media Group page, describing the agency as a strategic creative agency acquired by Stream Companies",
-        caption: "Acquired by Stream Companies",
-        width: 900,
-        height: 449,
-      },
-    ],
   },
   {
     id: "stream",
