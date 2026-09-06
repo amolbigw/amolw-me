@@ -357,6 +357,16 @@ body {
   .signal-row[data-artifacts="2"] .signal-artifacts {
     max-width: 38rem;
   }
+
+  /* Collapsing the container to zero is what makes the span work: the row
+     sizes to its text alone and the artifact paints out of the box, down over
+     the next milestone. It stays a grid item, so it keeps column 3's position
+     at every width without any of the offsets being restated here. Only above
+     900px — below it there is one column and nothing to span. */
+  .signal-row[data-span] .signal-artifacts {
+    height: 0;
+    overflow: visible;
+  }
 }
 
 .signal-artifact {
@@ -378,6 +388,16 @@ body {
 .signal-artifact--bare img,
 .signal-artifact--bare video {
   border: 0;
+}
+
+/* An artifact that belongs to two milestones rather than one. Driven by height
+   instead of width, because what has to line up is the run of rows beside it:
+   both are svh min-heights (38 + 22), so 60svh tracks the pair at any viewport
+   height, less the caption and a little daylight before the next row. */
+.signal-artifact--span img {
+  height: calc(60svh - 3.5rem);
+  width: auto;
+  max-width: 100%;
 }
 
 /* Linked artifacts. The image already carries a border, so the hover cue is a

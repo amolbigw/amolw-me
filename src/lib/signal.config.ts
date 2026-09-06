@@ -26,7 +26,9 @@
  * are. That is the same trade the platform screenshot makes and it is a
  * deliberate call, not an oversight — the photo is Amol's own team and was
  * already public before it landed here. Replacing it with a group shot of
- * anyone outside that team needs its own clearance.
+ * anyone outside that team needs its own clearance. The Stream Companies
+ * collage is the same case: Stream's own marketing photography of its own
+ * staff, at a size where no one is identifiable by anything but their face.
  *
  * The platform screenshot shows a real account. Its spend, delivery and
  * attribution figures are that client's actual numbers, published with their
@@ -84,6 +86,12 @@ export type SignalArtifact = {
    */
   video?: boolean;
   poster?: string;
+  /**
+   * Let the artifact run past its own milestone into the next one. Its row
+   * stops reserving the height, so the piece paints down across both — used
+   * where one image belongs to two beats rather than to either alone.
+   */
+  span?: boolean;
   /**
    * Multiplier on the artifact column's width. Only for a piece the default
    * 28rem gets wrong in one direction or the other: the mosaic is far too tall
@@ -160,16 +168,15 @@ export const milestones: Milestone[] = [
     note: "Acquired by Stream Companies.",
     artifacts: [
       {
-        /* Stream Companies' own cover art, feathered into the page at both
-           ends rather than cropped: the useful width varies by band, so a
-           hard crop would either clip the tagline or leave dead building
-           beside the award rows. `bare` because a frame would box the fade. */
+        /* Runs down across both Stream beats — the 2016 acquisition and the
+           four years after it — because it belongs to the pair, not to either
+           one. 1:2, so the height that covers both rows sets a narrow width. */
         src: "/trajectory/stream-companies.webp",
-        alt: "Stream Companies branding: Inc. 5000 winner nineteen times, Best Places to Work in PA winner five times, an award-winning full-service tech-enabled ad agency.",
+        alt: "Stream Companies: trade show stands, team photographs and the line an integrated agency doing the ordinary, extraordinarily well.",
         caption: "Stream Companies",
-        width: 900,
-        height: 351,
-        bare: true,
+        width: 600,
+        height: 1200,
+        span: true,
       },
     ],
   },

@@ -40,6 +40,7 @@ export function Trajectory() {
             className="signal-row"
             data-signal-row
             data-artifacts={m.artifacts ? m.artifacts.length : undefined}
+            data-span={m.artifacts?.[0].span ? "" : undefined}
           >
             <span className="signal-rail" aria-hidden>
               <Segment />
@@ -89,11 +90,13 @@ export function Trajectory() {
                   return (
                     <figure
                       key={a.src}
-                      className={
-                        a.bare
-                          ? "signal-artifact signal-artifact--bare"
-                          : "signal-artifact"
-                      }
+                      className={[
+                        "signal-artifact",
+                        a.bare && "signal-artifact--bare",
+                        a.span && "signal-artifact--span",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
                       style={{ "--i": i } as React.CSSProperties}
                     >
                       {a.href ? (
