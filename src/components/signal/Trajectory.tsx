@@ -70,7 +70,11 @@ export function Trajectory() {
                   return (
                     <figure
                       key={a.src}
-                      className="signal-artifact"
+                      className={
+                        a.bare
+                          ? "signal-artifact signal-artifact--bare"
+                          : "signal-artifact"
+                      }
                       style={{ "--i": i } as React.CSSProperties}
                     >
                       {a.href ? (

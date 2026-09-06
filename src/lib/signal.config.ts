@@ -72,6 +72,12 @@ export type SignalArtifact = {
   /** Intrinsic dimensions. Required — they are what keep CLS at zero. */
   width: number;
   height: number;
+  /**
+   * Drop the frame. The border reads as the edge of a photograph, which is
+   * right for a screenshot and wrong for a shape on transparency — there it
+   * draws a rectangle around mostly empty page.
+   */
+  bare?: boolean;
 };
 
 export type Milestone = {
@@ -187,6 +193,16 @@ export const milestones: Milestone[] = [
     label: "100-person company",
     meta: "Today",
     note: "Revenue, sales, customer success, product, engineering, operations, board.",
+    artifacts: [
+      {
+        src: "/trajectory/ft-team.webp",
+        alt: "The fullthrottle.ai team: staff headshots tiled as hexagons into the shape of the company mark.",
+        caption: "The people",
+        width: 900,
+        height: 997,
+        bare: true,
+      },
+    ],
   },
   {
     id: "thesis",

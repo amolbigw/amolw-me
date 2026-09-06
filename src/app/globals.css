@@ -364,6 +364,13 @@ body {
   border: 1px solid var(--border);
 }
 
+/* A shape on transparency rather than a framed raster. The border would draw a
+   rectangle around mostly empty page, so it comes off and the artwork sits
+   straight on --background. */
+.signal-artifact--bare img {
+  border: 0;
+}
+
 /* Linked artifacts. The image already carries a border, so the hover cue is a
    lift in the border and caption rather than anything added. */
 .signal-artifact-link {
