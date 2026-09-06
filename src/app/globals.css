@@ -364,7 +364,8 @@ body {
   min-width: 0;
 }
 
-.signal-artifact img {
+.signal-artifact img,
+.signal-artifact video {
   display: block;
   width: 100%;
   height: auto;
@@ -374,7 +375,8 @@ body {
 /* A shape on transparency rather than a framed raster. The border would draw a
    rectangle around mostly empty page, so it comes off and the artwork sits
    straight on --background. */
-.signal-artifact--bare img {
+.signal-artifact--bare img,
+.signal-artifact--bare video {
   border: 0;
 }
 

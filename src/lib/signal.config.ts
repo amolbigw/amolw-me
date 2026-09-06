@@ -78,6 +78,17 @@ export type SignalArtifact = {
    * draws a rectangle around mostly empty page.
    */
   bare?: boolean;
+  /**
+   * Render as video rather than an image. Needs `poster`, which is what shows
+   * until the file is fetched and what stands in under reduced motion.
+   */
+  video?: boolean;
+  poster?: string;
+  /**
+   * Fraction of the artifact column to occupy. Only for a piece whose natural
+   * size overwhelms the row — everything else fills the column.
+   */
+  scale?: number;
 };
 
 export type Milestone = {
@@ -216,6 +227,7 @@ export const milestones: Milestone[] = [
         width: 900,
         height: 997,
         bare: true,
+        scale: 0.7,
       },
     ],
   },
@@ -224,6 +236,20 @@ export const milestones: Milestone[] = [
     label: "AI / Identity / Media",
     meta: "The thesis",
     note: "The household is the durable unit. Everything else is a proxy for it.",
+    artifacts: [
+      {
+        /* The only moving artifact on the page, and the only one that ships
+           JavaScript: it holds at its poster until someone scrolls to it. At
+           this size the step copy is decorative — the loop is the point. */
+        src: "/trajectory/compounding-loop.mp4",
+        poster: "/trajectory/compounding-loop.webp",
+        video: true,
+        alt: "A compounding loop: first-party audiences feed a model, audience extension finds more households like them, and activation across CTV, display, audio and direct mail returns new households to the first-party audience.",
+        caption: "The loop",
+        width: 640,
+        height: 360,
+      },
+    ],
   },
   {
     /* Deliberately bare. No year, no note, no end cap — the line leaves this

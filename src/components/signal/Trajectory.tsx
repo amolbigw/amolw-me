@@ -1,4 +1,5 @@
 import { milestones } from "@/lib/signal.config";
+import { SignalVideo } from "./SignalVideo";
 
 /**
  * Experience A. A visual account of what got built, not a résumé.
@@ -14,9 +15,10 @@ import { milestones } from "@/lib/signal.config";
  * exact x of the `●` and the `01` is what makes the through-line legible at
  * all. Instrument, not decoration.
  *
- * A server component. Nothing here is interactive and every label is real text,
- * so the markup ships as HTML and the only JavaScript involved is the shared
- * scroll clock in SignalRoot.
+ * A server component. Every label is real text, so the markup ships as HTML.
+ * The only JavaScript is the shared scroll clock in SignalRoot and, on the one
+ * milestone that carries video, SignalVideo — which exists so a 1.8MB file
+ * eight screens down is not fetched by someone who never reaches it.
  */
 export function Trajectory() {
   return (
@@ -55,8 +57,16 @@ export function Trajectory() {
                 {m.artifacts.map((a, i) => {
                   {/* Plain <img>: the manifest holds intrinsic dimensions, so
                       the box is reserved before the file lands and CLS stays at
-                      zero. */}
-                  const img = (
+                      zero. The video branch reserves its box the same way. */}
+                  const img = a.video ? (
+                    <SignalVideo
+                      src={a.src}
+                      poster={a.poster ?? ""}
+                      label={a.alt}
+                      width={a.width}
+                      height={a.height}
+                    />
+                  ) : (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img
                       src={a.src}
@@ -75,7 +85,12 @@ export function Trajectory() {
                           ? "signal-artifact signal-artifact--bare"
                           : "signal-artifact"
                       }
-                      style={{ "--i": i } as React.CSSProperties}
+                      style={
+                        {
+                          "--i": i,
+                          ...(a.scale ? { width: `${a.scale * 100}%` } : null),
+                        } as React.CSSProperties
+                      }
                     >
                       {a.href ? (
                         <a
